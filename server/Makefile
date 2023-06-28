@@ -13,7 +13,7 @@ rusystem:
 	javac rusystem\*.java
 #	javac rusystem/*.java
 
-networkmanagement: common
+networkmanagement: common alarmmonitor rusystem
 	javac networkmanagement\*.java
 #	javac networkmanagement/*.java
 
