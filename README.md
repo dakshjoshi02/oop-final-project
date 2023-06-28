@@ -1,2 +1,72 @@
-# oop-final-project
-Final Project repo for OOP Design Patterns Course
+# Wireless Network Management Systems
+
+## Dependencies
+
+java sdk, make, git
+
+## Server (Network Management, Deployed Network, Network Alarm Monitor)
+
+### Build
+
+#### Option #1
+
+- cd server/
+- make networkmanagement
+- make run
+
+#### Option #2
+
+- cd server/
+- rm common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Linux) OR del common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Windows)
+- javac common/*.java networkmanagement/*.java rusystem/*.java alarmmonitor/*.java (Linux) OR javac common\*.java networkmanagement\*.java rusystem\*.java alarmmonitor\*.java (Windows)
+- java networkmanagement.NetworkManagement 
+
+## Network Management Client
+
+Socket communication to server
+
+### Build
+
+#### Option #1
+
+- cd clients/
+- make networkclient
+- make runnet
+
+#### Option #2
+
+- cd clients/
+- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) OR del common/*.class networkclient/*.class alarmclient/*.class (Windows)
+- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) OR javac common\*.java networkclient\*.java alarmclient\*.java (Windows)
+- java networkclient.NetworkClientMain
+
+## Alarm Monitoring Client
+
+Socket communication to server
+
+### Build
+
+#### Option #1
+
+- cd clients/
+- make alarmclient
+- make runalarm
+
+#### Option #2
+
+- cd clients/
+- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) OR del common/*.class networkclient/*.class alarmclient/*.class (Windows)
+- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) OR javac common\*.java networkclient\*.java alarmclient\*.java (Windows)
+- java alarmclient.AlarmClientMain
+
+### Team Members
+
+Akira Aida
+
+Daksh Joshi
+
+Nathan Ingram
+
+Shriya Satish
+
+Sihao Shen
