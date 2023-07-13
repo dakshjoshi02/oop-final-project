@@ -47,8 +47,8 @@ Socket communication to server
 
 ```bash
 - cd clients/
-- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) OR del common/*.class networkclient/*.class alarmclient/*.class (Windows)
-- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) OR javac common\*.java networkclient\*.java alarmclient\*.java (Windows)
+- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) connections/*.class OR del common/*.class networkclient/*.class alarmclient/*.class connections/*.class (Windows)
+- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) connections/*.java OR javac common\*.java networkclient\*.java alarmclient\*.java connections\*.java (Windows)
 - java networkclient.NetworkClientMain
 ```
 

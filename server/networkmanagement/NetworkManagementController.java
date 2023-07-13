@@ -5,6 +5,7 @@ import java.util.List;
 import common.Observer;
 import common.Event;
 import connections.ConnectionManager;
+import connections.Command;
 
 public class NetworkManagementController implements Observer
 {
@@ -20,20 +21,10 @@ public class NetworkManagementController implements Observer
         ConnectionManager.getInstance().registerObserver(this);
     }
     
-    public String processEvent(Event event, List<String> parameters)
+    public String processEvent(Command command)
     {
-        String response = "Recieved " + event + ". Parameters: ";
-        for (int i = 0; i < parameters.size(); ++i)
-        {
-            if (i != parameters.size() - 1)
-            {
-                response += parameters.get(i) + ", ";
-            }
-            else
-            {
-                response += parameters.get(i);
-            }
-        }
+        String response = command.execute();
+
         return response;
     }
 }

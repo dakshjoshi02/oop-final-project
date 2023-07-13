@@ -34,7 +34,10 @@ public class ConnectionManager implements Subject, Runnable
             // TODO: Delete the below lines of code. Only meant for testing purposes
             List<String> parameters = new ArrayList<String>();
             parameters.add("Test");
-            notifyObservers(Event.COMMISSION_RU, parameters);
+            
+            Command command = CommandFactory.getInstance().createCommand(Event.COMMISSION_RU, parameters);
+            notifyObservers(command);
+            
             try
             {
                 Thread.sleep(5000);
@@ -49,7 +52,7 @@ public class ConnectionManager implements Subject, Runnable
             
             // Parse the message into Event & String parameters
             
-            // Call notifyObservers with the parsed message
+            // Call notifyObservers with the parsed message as a command
         }
     }
     
@@ -66,11 +69,11 @@ public class ConnectionManager implements Subject, Runnable
         }
     }
     
-    public void notifyObservers(Event event, List<String> parameters)
+    public void notifyObservers(Command command)
     {
         for (Observer observer : observers)
         {
-            String responseString = observer.processEvent(event, parameters);
+            String responseString = observer.processEvent(command);
             
             // Write code that responds to the connection that triggered the event
             // with the responseString

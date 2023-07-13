@@ -2,7 +2,9 @@ package common;
 
 import java.util.List;
 
+import connections.Command;
+
 public interface Observer
 {
-    public String processEvent(Event event, List<String> parameters);
+    public String processEvent(Command command);
 }
