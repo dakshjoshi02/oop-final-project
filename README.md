@@ -26,7 +26,7 @@ The wireless network management system will be broken down between a server and 
 - cd server/
 - rm common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Linux) OR del common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Windows)
 - javac common/*.java networkmanagement/*.java rusystem/*.java alarmmonitor/*.java (Linux) OR javac common\*.java networkmanagement\*.java rusystem\*.java alarmmonitor\*.java (Windows)
-- java networkmanagement.NetworkManagement 
+- java networkmanagement.NetworkMain
 ```
 
 ## Network Management Client
