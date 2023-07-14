@@ -1,10 +1,13 @@
 package connections;
 
+import common.Response;
+
 public class StubCommand extends Command
 {
     @Override
-    public String execute()
+    public Response execute()
     {
-        return "";
+        Response response = new Response(true, "StubCommand::execute");
+        return response;
     }
 }

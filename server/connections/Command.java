@@ -2,9 +2,12 @@ package connections;
 
 import java.util.List;
 
-public abstract class Command
+import rusystem.ManagedNetwork;
+import common.Response;
+
+public abstract class Command 
 {
-    private String commandText;
+    protected String commandText;
     
     // Needed for stub command
     public Command()
@@ -16,5 +19,5 @@ public abstract class Command
         this.commandText = commandText;
     }
 
-    public abstract String execute();
+    public abstract Response execute();
 }

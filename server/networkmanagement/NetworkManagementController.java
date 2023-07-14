@@ -4,6 +4,7 @@ import java.util.List;
 
 import common.Observer;
 import common.Event;
+import common.Response;
 import connections.ConnectionManager;
 import connections.Command;
 
@@ -21,9 +22,9 @@ public class NetworkManagementController implements Observer
         ConnectionManager.getInstance().registerObserver(this);
     }
     
-    public String processEvent(Command command)
+    public Response processEvent(Command command)
     {
-        String response = command.execute();
+        Response response = command.execute();
 
         return response;
     }

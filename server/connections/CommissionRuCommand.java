@@ -2,11 +2,14 @@ package connections;
 
 import java.util.List;
 
+import rusystem.ManagedNetwork;
+import common.Response;
+
 public class CommissionRuCommand extends Command
 {
     private String ipAddress;
 
-    public CommissionRuCommand(String commandText, List<String> inputs)
+    public CommissionRuCommand(String commandText, List<String> inputs) throws Exception
     {
         super(commandText);
         
@@ -16,15 +19,39 @@ public class CommissionRuCommand extends Command
         }
         else
         {
-            System.out.println("ABN: Wrong number of input strings passed to ctor()");
+            throw new Exception("ABN: Wrong number of input strings passed to ctor()");
         }
     }
 
     @Override
-    public String execute()
-    {        
-        String response = "Executing CommissionRuCommand";
-      
+    public Response execute()
+    {
+        // This area needs to be refactored
+        ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
+        Response response = managedNetwork.setupRU(ipAddress);
+        if (response.isSuccessful)
+        {
+            response = managedNetwork.activateRU(ipAddress);
+            if (response.isSuccessful)
+            {
+                response = managedNetwork.postActivation(ipAddress);
+                if (response.isSuccessful)
+                {
+                    response = managedNetwork.performSignalScaling(ipAddress);
+                    if (response.isSuccessful)
+                    {
+                        response = managedNetwork.performSelfDiagnostics(ipAddress);
+                        if (response.isSuccessful)
+                        {
+                            response = new Response(true, "Successfully executed CommissionRuCommand");
+                            return response;
+                        }
+                    }
+                }
+            }
+        }
+
+        // This will return the latest error message if something failed
         return response;
     }
 }

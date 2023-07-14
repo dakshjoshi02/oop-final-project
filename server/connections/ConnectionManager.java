@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import common.Subject;
 import common.Observer;
 import common.Event;
+import common.Response;
 
 public class ConnectionManager implements Subject, Runnable
 {
-    List<Observer> observers = new ArrayList<Observer>();
+    private List<Observer> observers = new ArrayList<Observer>();
     private static ConnectionManager instance = null;
     
     // Private constructor since it's a singleton
     private ConnectionManager()
     {
-        
     }
     
     public static synchronized ConnectionManager getInstance()
@@ -36,7 +36,10 @@ public class ConnectionManager implements Subject, Runnable
             parameters.add("Test");
             
             Command command = CommandFactory.getInstance().createCommand(Event.COMMISSION_RU, parameters);
-            notifyObservers(command);
+            if (command != null)
+            {
+                notifyObservers(command);
+            }
             
             try
             {
@@ -73,11 +76,11 @@ public class ConnectionManager implements Subject, Runnable
     {
         for (Observer observer : observers)
         {
-            String responseString = observer.processEvent(command);
+            Response response = observer.processEvent(command);
             
             // Write code that responds to the connection that triggered the event
             // with the responseString
-            System.out.println(responseString);
+            System.out.println(response.responseMessage);
         }
     }
 }
