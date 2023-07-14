@@ -5,9 +5,6 @@ import java.util.HashMap;
 
 import common.Response;
 
-// This area needs to be refactored. Current IF into the managed network isn't great.
-// Likely could convert each function into a command class and then just have the managed network call each command
-// Then an ENUM would be passed into one function the appropriate function would be called
 public class ManagedNetwork
 {
     private static ManagedNetwork instance = null;

@@ -2,6 +2,7 @@ package connections;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import common.Subject;
 import common.Observer;
@@ -27,6 +28,38 @@ public class ConnectionManager implements Subject, Runnable
         return instance;
     }
     
+    private Command buildCommand(String commandString)
+    {
+        // All commandStrings should start with the command number followed by a ','
+        List<String> inputParameters = new ArrayList<String>(Arrays.asList(commandString.split(",")));
+        Event eventId = Event.END;
+        
+        if (inputParameters.size() > 0)
+        {
+            try
+            {
+                eventId = Event.values()[Integer.parseInt(inputParameters.get(0))];
+                System.out.println(inputParameters.get(0));
+                System.out.println(inputParameters.get(1));
+                // Don't need the event ID after we've parsed it
+                inputParameters.remove(0);
+            }
+            catch (NumberFormatException e)
+            {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            System.out.println("Invalid command string");
+            return null;
+        }
+        
+        Command command = CommandFactory.getInstance().createCommand(eventId, inputParameters);
+        
+        return command;
+    }
+    
     public void run()
     {
         while(true)
@@ -35,7 +68,12 @@ public class ConnectionManager implements Subject, Runnable
             List<String> parameters = new ArrayList<String>();
             parameters.add("Test");
             
-            Command command = CommandFactory.getInstance().createCommand(Event.COMMISSION_RU, parameters);
+            // Test code, the socket will send a message as a string which needs to be parsed and converted into a valid command
+            // NOTE: Conversion of complex types from string should be done in the individual commands (ie. Carrier)
+            // To be done later
+            String commandString = "0,192.168.0.1"; // 0 ==> COMMISSION_RU, 192.168.0.1 ==> ipAddress
+            Command command = buildCommand(commandString);
+            
             if (command != null)
             {
                 notifyObservers(command);

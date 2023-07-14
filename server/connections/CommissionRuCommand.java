@@ -26,7 +26,6 @@ public class CommissionRuCommand extends Command
     @Override
     public Response execute()
     {
-        // This area needs to be refactored
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         Response response = managedNetwork.setupRU(ipAddress);
         if (response.isSuccessful)
