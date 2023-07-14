@@ -24,8 +24,14 @@ The wireless network management system will be broken down between a server and 
 
 ```bash
 - cd server/
-- rm common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Linux) OR del common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class (Windows)
-- javac common/*.java networkmanagement/*.java rusystem/*.java alarmmonitor/*.java (Linux) OR javac common\*.java networkmanagement\*.java rusystem\*.java alarmmonitor\*.java (Windows)
+
+Linux
+- rm common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class connections/*.class
+- javac common/*.java networkmanagement/*.java rusystem/*.java alarmmonitor/*.java connections/*.java
+Windows
+- del common\*.class networkmanagement\*.class rusystem\*.class alarmmonitor\*.class connections\*.class
+- javac common\*.java networkmanagement\*.java rusystem\*.java alarmmonitor\*.java connections\*.java
+
 - java networkmanagement.NetworkMain
 ```
 
@@ -47,8 +53,14 @@ Socket communication to server
 
 ```bash
 - cd clients/
-- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) connections/*.class OR del common/*.class networkclient/*.class alarmclient/*.class connections/*.class (Windows)
-- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) connections/*.java OR javac common\*.java networkclient\*.java alarmclient\*.java connections\*.java (Windows)
+
+Linux
+- rm common/*.class networkclient/*.class alarmclient/*.class
+- javac common/*.java networkclient/*.java alarmclient/*.java
+Windows
+- del common\*.class networkclient\*.class alarmclient\*.class
+- javac common\*.java networkclient\*.java alarmclient\*.java
+
 - java networkclient.NetworkClientMain
 ```
 
@@ -70,8 +82,14 @@ Socket communication to server
 
 ```bash
 - cd clients/
-- rm common/*.class networkclient/*.class alarmclient/*.class (Linux) OR del common/*.class networkclient/*.class alarmclient/*.class (Windows)
-- javac common/*.java networkclient/*.java alarmclient/*.java (Linux) OR javac common\*.java networkclient\*.java alarmclient\*.java (Windows)
+
+Linux
+- rm common/*.class networkclient/*.class alarmclient/*.class
+- javac common/*.java networkclient/*.java alarmclient/*.java
+Windows
+- del common\*.class networkclient\*.class alarmclient\*.class
+- javac common\*.java networkclient\*.java alarmclient\*.java
+
 - java alarmclient.AlarmClientMain
 ```
 
