@@ -21,6 +21,10 @@ networkmanagement: common connections alarmmonitor rusystem
 	javac networkmanagement\*.java
 #	javac networkmanagement/*.java
 
+ruunit:
+	javac ruunit\*.java
+#	javac rusystem/*.java
+
 run:
 	java networkmanagement.NetworkMain
 
