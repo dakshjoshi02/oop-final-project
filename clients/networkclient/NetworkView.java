@@ -3,7 +3,9 @@ package networkclient;
 import common.Types;
 import common.UI;
 import common.MenuOption;
-import common.MessageContainer
+import common.MessageContainer;
+import common.Command;
+import common.CommandFactory;
 
 public class NetworkView implements UI {
     private Map<MenuOption, Command> networkClientMap;
@@ -17,14 +19,14 @@ public class NetworkView implements UI {
     }
 
     /*
-        * @brief Displays the UI by iterating through the uiClientMap
+        * @brief Displays the UI by iterating through the networkClientMap
     */
     @Override
     public void printUI()
     {
         System.out.println();
         System.out.println("========== Please Enter A Menu Option ==========");
-        for (Map.Entry<MenuOption, Command> mapEntry : uiClientMap.entrySet())
+        for (Map.Entry<MenuOption, Command> mapEntry : networkClientMap.entrySet())
         {
         System.out.print(mapEntry.getKey().ordinal() + 1 + ". ");
         System.out.print(mapEntry.getValue().outputText + " ");
@@ -102,7 +104,7 @@ public class NetworkView implements UI {
         if (menuOption > 0 && menuOption < (lastMenuVal + 1))
         {
             MenuOption selectedOption = MenuOption.values()[menuOption - 1];
-            Command commandToExecute = uiClientMap.get(selectedOption);
+            Command commandToExecute = networkClientMap.get(selectedOption);
             messageToServer = commandToExecute.execute();
         }
         else
@@ -116,7 +118,4 @@ public class NetworkView implements UI {
         }
         return messageToServer;
     }
-
-    Types type = Types.A;
-    System.out.println(type);
 }
