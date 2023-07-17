@@ -1,19 +1,27 @@
 package rusystem;
 
+import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Carrier {
 
     private static int globalId = 1;
     private final int id;
-    private HashSet<RURFPorts> RFPorts;
+    private ArrayDeque<String> portQueue; 
     private HashSet<FrequencyBand> frequencyBand;
+    private HashSet<String> ports;
     private double transmittingPower;
+    private final static int NUM_OF_PORTS = 8;
 
     public Carrier() {
         this.id = globalId;
         ++globalId;
-        RFPorts = new HashSet<RURFPorts>();
+        this.portQueue = new ArrayDeque<String>();
+        this.ports = new HashSet<>(Arrays.asList("A", "B", "C", "D", "E", "F", "G", "H"));
+        for (String port : ports) {
+            portQueue.add(port);
+        }
     }
 
     public boolean createLteCarrier() {
