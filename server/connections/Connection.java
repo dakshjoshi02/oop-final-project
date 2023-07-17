@@ -30,6 +30,7 @@ public class Connection implements Observer, Runnable
             ois = new ObjectInputStream(socket.getInputStream());
             
             // Register for the responses
+            this.networkManagementController = networkManagementController;
             observerId = networkManagementController.registerObserver(this);
         }
         catch (Exception e)
@@ -69,8 +70,9 @@ public class Connection implements Observer, Runnable
     // What format are we using for the strings to be sent?
     private Command buildCommand(String msgFromClient)
     {
-        // All commandStrings should start with the command number followed by a ','
-        List<String> inputParameters = new ArrayList<String>(Arrays.asList(msgFromClient.split(",")));
+        // Each field of the string from the msgFromClient will be seperated by a :
+        // Further parsing will be done in the constructor of each command so that the format makes sense
+        List<String> inputParameters = new ArrayList<String>(Arrays.asList(msgFromClient.split(":")));
         Event eventId = Event.END;
         
         if (inputParameters.size() > 0)
@@ -78,9 +80,6 @@ public class Connection implements Observer, Runnable
             try
             {
                 eventId = Event.values()[Integer.parseInt(inputParameters.get(0))];
-                System.out.println(inputParameters.get(0));
-                System.out.println(inputParameters.get(1));
-                // Don't need the event ID after we've parsed it
                 inputParameters.remove(0);
             }
             catch (NumberFormatException e)
@@ -96,7 +95,10 @@ public class Connection implements Observer, Runnable
         
         Command command = CommandFactory.getInstance().createCommand(eventId, inputParameters);
         // Bind the observerId (connection identifier) to the command, so we can get the response
-        command.observerId = observerId;
+        if (command != null)
+        {
+            command.observerId = observerId;
+        }
         
         return command;
     }

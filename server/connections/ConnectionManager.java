@@ -38,6 +38,7 @@ public class ConnectionManager implements Runnable
         // The main thread will stay in this loop forever
         while(true)
         {
+            System.out.println("The server is awaiting new connections...");
             try
             {
                 // Blocking call, moves forward when a new connection connects
@@ -50,6 +51,7 @@ public class ConnectionManager implements Runnable
             
             // Spawn a thread for the new connection, the server thread doesn't care about the life span of the thread
             // We could store this information if we want to update the observers during runtime (but not needed for this project)
+            System.out.println("New connection!");
             new Thread(new Connection(socket, networkManagementController)).start();
         }
     }
