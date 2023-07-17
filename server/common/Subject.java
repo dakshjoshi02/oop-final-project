@@ -6,7 +6,7 @@ import connections.Command;
 
 public interface Subject
 {
-    public void registerObserver(Observer o);
-    public void removeObserver(Observer o);
-    public void notifyObservers(Command command);
+    public Integer registerObserver(Observer o);
+    public void removeObserver(Integer observerId);
+    public void notifyObserver(Integer observerId, Response response);
 }
