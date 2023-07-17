@@ -1,6 +1,9 @@
 package networkclient;
 
 import common.Types;
+import common.UI;
+import common.MenuOption;
+import common.MessageContainer
 
 public class NetworkView implements UI {
     private Map<MenuOption, Command> networkClientMap;
