@@ -71,7 +71,7 @@ public class Connection implements Observer, Runnable
     private Command buildCommand(String msgFromClient)
     {
         // Each field of the string from the msgFromClient will be seperated by a :
-        // Further parsing will be done in the constructor of each command so that the format makes sense
+        // Each variable inside of a field will be seperated by a ;
         List<String> inputParameters = new ArrayList<String>(Arrays.asList(msgFromClient.split(":")));
         Event eventId = Event.END;
         
@@ -80,6 +80,7 @@ public class Connection implements Observer, Runnable
             try
             {
                 eventId = Event.values()[Integer.parseInt(inputParameters.get(0))];
+                System.out.println(eventId);
                 inputParameters.remove(0);
             }
             catch (NumberFormatException e)
@@ -116,8 +117,12 @@ public class Connection implements Observer, Runnable
         while (true)
         {
             String msgFromClient = retrieveMsg();
+            System.out.println(msgFromClient);
             Command command = buildCommand(msgFromClient);
-            networkManagementController.addToProcessingQueue(command);
+            if (command != null)
+            {
+                networkManagementController.addToProcessingQueue(command);
+            }
         }
     }
 }

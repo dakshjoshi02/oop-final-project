@@ -15,8 +15,8 @@ public class Client
     // Example: COMMISSION_RU - COMMISSION_RU => 0, IP => 192.168.0.1
     //String messageToServer = "0:192.168.0.1:";
     
-    // Another example: SETUP_CARRIER_ON_RU => 8, IP => 192.168.0.1, Carrier => CarrierId 0; RfPorts A-H; Frequency LTE_BAND_1; TX Power 80
-    String messageToServer = "8:192.168.0.1:0;A-H;LTE_BAND_1;80:";
+    // Another example: SETUP_CARRIER_ON_RU => 8, IP => 192.168.0.1, RfPort A; 0 => Frequency LTE_BAND_1; TX Power 80
+    String messageToServer = "8:192.168.0.1:A;0;80:";
 
     if (!messageToServer.isEmpty())
     {
