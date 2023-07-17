@@ -1,4 +1,4 @@
-package rusystem.RadioUnitState;
+package rusystem;
 public enum RadioUnitAlarmStatusLevels{
     CRITICAL,
     MAJOR,

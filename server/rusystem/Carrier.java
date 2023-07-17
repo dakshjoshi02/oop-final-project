@@ -7,6 +7,7 @@ public class Carrier {
     private static int globalId = 1;
     private final int id;
     private ArrayList<String> RFPorts; // TODO: type of rf ports
+    private String frequencyBand;
     private double transmittingPower;
 
     public Carrier() {

@@ -1,4 +1,4 @@
-package rusystem.RadioUnitState;
+package rusystem;
 /*
  * defines an interface for ru state machine
  */
@@ -12,6 +12,7 @@ public interface RUState {
     void modifyCarrier(int band, String frequency); // carrier related
     void removeCarrier(int carrierId); // carrier id
     void removeAllCarriers();
+    void setAlarmStatus();
     void postActivation();
     void performSelfDiagnostics();
     void acknowledgeAlarm();
