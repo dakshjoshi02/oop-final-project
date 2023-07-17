@@ -12,7 +12,6 @@ public class Carrier {
     private HashSet<FrequencyBand> frequencyBand;
     private HashSet<String> ports;
     private double transmittingPower;
-    private final static int NUM_OF_PORTS = 8;
 
     public Carrier() {
         this.id = globalId;
