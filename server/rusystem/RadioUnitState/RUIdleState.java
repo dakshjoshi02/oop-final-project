@@ -29,4 +29,44 @@ public class RUIdleState implements RUState {
     public void release() {
         System.out.println("release");
     }
+    
+    @Override
+    public void setupCarrier() {
+
+    }
+
+    @Override
+    public void signalScaling() {
+
+    }
+
+    @Override
+    public void modifyCarrier(int carrierId, String bandFrequency) {
+
+    }
+
+    @Override
+    public void removeCarrier(int carrierId) {
+
+    }
+
+    @Override
+    public void removeAllCarriers() {
+
+    }
+
+    @Override
+    public void postActivation() {
+
+    }
+
+    @Override
+    public void performSelfDiagnostics() {
+
+    }
+
+    @Override
+    public void acknowledgeAlarm() {
+
+    }
 }
