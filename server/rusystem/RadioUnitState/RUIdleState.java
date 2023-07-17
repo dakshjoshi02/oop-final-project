@@ -1,5 +1,15 @@
-package server;
+package rusystem.RadioUnitState;
+
+import rusystem.ManagedRadioUnit;
+
 public class RUIdleState implements RUState {
+
+    ManagedRadioUnit ru;
+
+    public RUIdleState(ManagedRadioUnit ru) {
+        this.ru = ru;
+    }
+
     @Override
     public void setup() {
         System.out.println("setup");

@@ -1,4 +1,4 @@
-package server;
+package rusystem.RadioUnitState;
 /*
  * defines an interface for ru state machine
  */
