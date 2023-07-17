@@ -96,15 +96,16 @@ public class ManagedRadioUnit
 
     public void postActivation()
     {
-        
+        System.out.println("Performing postActivation Procedure on: " + this.toString());
     }
 
     public void performSelfDiagnostics()
     {
-
+        System.out.println("Performing performSelfDiagnostics Procedure on: " + this.toString());
     }
 
-    public void acknowledgeAlarm() {
-
+    public void acknowledgeAlarm() 
+    {
+        System.out.println("Performing acknowledgeAlarm Procedure on: " + this.toString());
     }
 }
