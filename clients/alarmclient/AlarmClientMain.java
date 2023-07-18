@@ -10,7 +10,6 @@ public class AlarmClientMain {
 
     private static void clientLoop()
     {
-        System.out.println("TEST");
         ui.printUI();
         String messageToServer = ui.retrieveUserInput();
 
@@ -25,7 +24,7 @@ public class AlarmClientMain {
 
     public static void main(String[] args)
     {
-        AlarmView view = new AlarmView();
+        ui = new AlarmView();
         final int PORT = 8080;
         clientMessageHandler = new ClientMessageHandler(PORT);
         while (true)

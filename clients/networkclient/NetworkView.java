@@ -87,7 +87,7 @@ public class NetworkView implements UI {
 
             if (menuOption > 0 && menuOption < (lastMenuVal + 1))
             {
-                MenuOptionNetwork selectedOption = MenuOptionNetwork.values()[menuOption - 1];
+                MenuOption selectedOption = MenuOption.values()[menuOption - 1];
                 Command commandToExecute = networkClientMap.get(selectedOption);
                 messageToServer = commandToExecute.execute();
             }

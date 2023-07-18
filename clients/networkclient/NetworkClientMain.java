@@ -15,19 +15,20 @@ public class NetworkClientMain {
 
         if (!messageToServer.isEmpty())
         {
-        clientMessageHandler.sendMessage(messageToServer);
-        MessageContainer messageContainer = clientMessageHandler.retrieveMessage();
-        System.out.println("message container before display response: " + messageContainer.menuOption + " " + messageContainer.messageContents);
-        ui.displayResponse(messageContainer);
+            clientMessageHandler.sendMessage(messageToServer);
+            MessageContainer messageContainer = clientMessageHandler.retrieveMessage();
+            System.out.println("message container before display response: " + messageContainer.menuOption + " " + messageContainer.messageContents);
+            ui.displayResponse(messageContainer);
         }
     }
     
     public static void main(String[] args) {
-        NetworkView view = new NetworkView();
-        int port = 1234;
-        clientMessageHandler = new ClientMessageHandler(port);
-        while (true) {
-        clientLoop();
+        ui = new NetworkView();
+        final int PORT = 8080;
+        clientMessageHandler = new ClientMessageHandler(PORT);
+        while (true)
+        {
+            clientLoop();
         }
     }
 }

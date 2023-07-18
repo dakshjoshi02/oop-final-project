@@ -23,7 +23,8 @@ public class AlarmView implements UI {
         System.out.println("========== Please Enter A Menu Option ==========");
         for (Map.Entry<MenuOption, Command> mapEntry : alarmClientMap.entrySet())
         {
-            System.out.print(mapEntry.getKey().ordinal() + 1 + ". ");
+            // Subtraction MenuOptionAlarm.CONVERSION so the print makes sense
+            System.out.print(mapEntry.getKey().ordinal() + 1 - MenuOptionAlarm.CONVERSION + ". ");
             System.out.print(mapEntry.getValue().outputText + " ");
 
             if (mapEntry.getValue().inputs.size() != 0)
@@ -86,7 +87,8 @@ public class AlarmView implements UI {
 
             if (menuOption > 0 && menuOption < (lastMenuVal + 1))
             {
-                MenuOptionAlarm selectedOption = MenuOptionAlarm.values()[menuOption - 1];
+                 // Add MenuOptionAlarm.CONVERSION so correct command is fetched
+                MenuOption selectedOption = MenuOption.values()[menuOption - 1 + MenuOptionAlarm.CONVERSION];
                 Command commandToExecute = alarmClientMap.get(selectedOption);
                 messageToServer = commandToExecute.execute();
             }

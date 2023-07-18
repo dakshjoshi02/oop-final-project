@@ -17,6 +17,7 @@ public class GetNetworkAlarmsCommand extends Command
   {
     String messageToBuild = MenuOption.GET_NETWORK_ALARMS.ordinal() + "=";
     messageToBuild += super.execute();
+    System.out.println(messageToBuild);
     return messageToBuild;
   }
 }
