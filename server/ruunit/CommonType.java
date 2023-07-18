@@ -38,44 +38,34 @@ public class CommonType
     public static final String RF_6 = "G";
     public static final String RF_7 = "H";
 
-    public enum RusBand
-    {
-        LTE_BAND_1,
-        LTE_BAND_2,
-        LTE_BAND_3,
-        LTE_BAND_4,
-        LTE_BAND_5,
-        LTE_BAND_6,
-        LTE_BAND_7,
-        LTE_BAND_8,
+    public enum FrequencyBand {
+        LTE_BAND_1("1920"),
+        LTE_BAND_2("1850"),
+        LTE_BAND_3("1710"),
+        LTE_BAND_4("1755"),
+        LTE_BAND_5("824"),
+        LTE_BAND_6("830"),
+        LTE_BAND_7("2500"),
+        LTE_BAND_8("880"),
+        WCDMA_BAND_1("2100"),
+        WCDMA_BAND_2("1900"),
+        WCDMA_BAND_3("1800"),
+        WCDMA_BAND_4("2100/1700"),
+        WCDMA_BAND_5("850US"),
+        WCDMA_BAND_6("850Japan"),
+        WCDMA_BAND_7("2500"),
+        WCDMA_BAND_8("900");
 
-        WCDMA_BAND_1,
-        WCDMA_BAND_2,
-        WCDMA_BAND_3,
-        WCDMA_BAND_4,
-        WCDMA_BAND_5,
-        WCDMA_BAND_6,
-        WCDMA_BAND_7,
-        WCDMA_BAND_8
+        private String value;
+
+        private FrequencyBand(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
     }
-
-    public static final  int LTE_BAND_1 = 1920;
-    public static final  int LTE_BAND_2 = 1850;
-    public static final  int LTE_BAND_3 = 1710;
-    public static final  int LTE_BAND_4 = 1755;
-    public static final  int LTE_BAND_5 = 824;
-    public static final  int LTE_BAND_6 = 830;
-    public static final  int LTE_BAND_7 = 2500;
-    public static final  int LTE_BAND_8 = 880;
-
-    public static final  int WCDMA_BAND_1 = 2100;
-    public static final  int WCDMA_BAND_2 = 1900;
-    public static final  int WCDMA_BAND_3 = 1800;
-    public static final  int WCDMA_BAND_4 = 1700;
-    public static final  int WCDMA_BAND_5 = 850;
-    public static final  int WCDMA_BAND_6 = 850;
-    public static final  int WCDMA_BAND_7 = 2500;
-    public static final  int WCDMA_BAND_8 = 900;
 
     public enum RUAlarmStatusLevel
     {

@@ -16,7 +16,7 @@ public class Client
     //String messageToServer = "0:192.168.0.1:";
     
     // Another example: SETUP_CARRIER_ON_RU => 8, IP => 192.168.0.1, RfPort A; 0 => Frequency LTE_BAND_1; TX Power 80
-    String messageToServer = "8:192.168.0.1:A;0;80:";
+    String messageToServer = "8:192.168.0.1:A-B-C-D;0;80:";
 
     if (!messageToServer.isEmpty())
     {

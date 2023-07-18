@@ -6,8 +6,9 @@ import java.util.Arrays;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import rusystem.FrequencyBand;
-import rusystem.Carrier;
+import ruunit.CommonType.FrequencyBand;
+import ruunit.CommonType.RFPort;
+import ruunit.Carrier;
 
 public class SetupCarrierOnRuCommand extends Command
 {
@@ -22,19 +23,20 @@ public class SetupCarrierOnRuCommand extends Command
         {
             ipAddress = inputs.get(0);
             String carrierAsString = inputs.get(1);
-            System.out.println(carrierAsString);
             List<String> carrierSegments = new ArrayList<String>(Arrays.asList(carrierAsString.split(";")));
             if (carrierSegments.size() == 3)
             {
-                String port = carrierSegments.get(0);
-                System.out.println(port);
+                List<String> strPorts = new ArrayList<String>(Arrays.asList(carrierSegments.get(0).split("-")));
+                List<RFPort> rfPorts = new ArrayList<RFPort>();
+                for (String strPort : strPorts)
+                {
+                    rfPorts.add(RFPort.values()[Integer.parseInt(strPort)]);
+                    System.out.println(strPort);
+                }
                 FrequencyBand frequencyBand = FrequencyBand.values()[Integer.parseInt(carrierSegments.get(1))];
-                System.out.println(frequencyBand);
                 double transmittingPower = Double.parseDouble(carrierSegments.get(2));
-                System.out.println(transmittingPower);
-                carrier = new Carrier(port, frequencyBand, transmittingPower);
+                carrier = new Carrier(rfPorts, frequencyBand, transmittingPower);
             }
-            
         }
         else
         {

@@ -8,7 +8,7 @@ import common.Response;
 public class RemoveCarrierOnRuCommand extends Command
 {
     private String ipAddress;
-    private String carrierId;
+    private Integer carrierId;
 
     public RemoveCarrierOnRuCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -17,7 +17,7 @@ public class RemoveCarrierOnRuCommand extends Command
         if (inputs.size() == 2)
         {
             ipAddress = inputs.get(0);
-            carrierId = inputs.get(1);
+            carrierId = Integer.parseInt(inputs.get(1));
         }
         else
         {

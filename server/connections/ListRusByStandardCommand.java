@@ -4,10 +4,11 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
+import ruunit.CommonType.RAT;
 
 public class ListRusByStandardCommand extends Command
 {
-    private String ratType;
+    private RAT ratType;
 
     public ListRusByStandardCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -15,7 +16,7 @@ public class ListRusByStandardCommand extends Command
         
         if (inputs.size() == 1)
         {
-            ratType = inputs.get(0);
+            ratType = RAT.values()[Integer.parseInt(inputs.get(0))];
         }
         else
         {

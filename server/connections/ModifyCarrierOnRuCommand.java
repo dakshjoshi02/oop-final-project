@@ -4,12 +4,13 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
+import ruunit.CommonType.FrequencyBand;
 
 public class ModifyCarrierOnRuCommand extends Command
 {
     private String ipAddress;
-    private String carrierId;
-    private String bandFreq;
+    private Integer carrierId;
+    private FrequencyBand freqBand;
 
     public ModifyCarrierOnRuCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -18,8 +19,8 @@ public class ModifyCarrierOnRuCommand extends Command
         if (inputs.size() == 3)
         {
             ipAddress = inputs.get(0);
-            carrierId = inputs.get(1);
-            bandFreq = inputs.get(2);
+            carrierId = Integer.parseInt(inputs.get(1));
+            freqBand = FrequencyBand.values()[Integer.parseInt(inputs.get(2))];
         }
         else
         {
