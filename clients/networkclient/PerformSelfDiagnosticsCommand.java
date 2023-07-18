@@ -14,7 +14,7 @@ public class PerformSelfDiagnosticsCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.PERFORM_SELF_DIAGNOSTICS.ordinal() + "=";
+    String messageToBuild = MenuOption.PERFORM_SELF_DIAGNOSTICS.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

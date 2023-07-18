@@ -14,7 +14,7 @@ public class CommissionRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.COMMISSION_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.COMMISSION_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

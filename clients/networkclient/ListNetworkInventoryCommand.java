@@ -14,7 +14,7 @@ public class ListNetworkInventoryCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.LIST_NETWORK_INVENTORY.ordinal() + "=";
+    String messageToBuild = MenuOption.LIST_NETWORK_INVENTORY.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

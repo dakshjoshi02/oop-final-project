@@ -14,7 +14,7 @@ public class RemoveRadioUnitCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.REMOVE_RADIO_UNIT.ordinal() + "=";
+    String messageToBuild = MenuOption.REMOVE_RADIO_UNIT.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

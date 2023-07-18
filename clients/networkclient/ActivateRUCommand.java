@@ -15,7 +15,7 @@ public class ActivateRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.ACTIVATE_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.ACTIVATE_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

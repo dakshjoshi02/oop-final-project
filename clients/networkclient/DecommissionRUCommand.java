@@ -14,7 +14,7 @@ public class DecommissionRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.DECOMMISSION_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.DECOMMISSION_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

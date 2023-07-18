@@ -14,7 +14,7 @@ public class SetAlarmOnRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.SET_ALARM_ON_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.SET_ALARM_ON_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

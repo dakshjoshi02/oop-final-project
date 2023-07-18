@@ -15,7 +15,7 @@ public class RemoveAllCarriersOnRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.REMOVE_ALL_CARRIERS_ON_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.REMOVE_ALL_CARRIERS_ON_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

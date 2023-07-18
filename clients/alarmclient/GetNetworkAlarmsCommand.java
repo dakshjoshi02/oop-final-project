@@ -7,17 +7,16 @@ import java.util.List;
 public class GetNetworkAlarmsCommand extends Command
 {
 
-  public GetNetworkAlarmsCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
+    public GetNetworkAlarmsCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.GET_NETWORK_ALARMS.ordinal() + "=";
-    messageToBuild += super.execute();
-    System.out.println(messageToBuild);
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.GET_NETWORK_ALARMS.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

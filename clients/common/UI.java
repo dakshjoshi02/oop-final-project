@@ -5,9 +5,9 @@ import java.util.TreeMap;
 
 public interface UI
 {
-  public void printUI();
+    public void printUI();
 
-  public void displayResponse(MessageContainer messageContainer);
+    public void displayResponse(MessageContainer messageContainer);
 
-  public String retrieveUserInput();
+    public String retrieveUserInput();
 }

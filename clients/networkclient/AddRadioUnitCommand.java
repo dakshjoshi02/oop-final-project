@@ -14,7 +14,7 @@ public class AddRadioUnitCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.ADD_RADIO_UNIT.ordinal() + "=";
+    String messageToBuild = MenuOption.ADD_RADIO_UNIT.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

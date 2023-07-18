@@ -1,7 +1,7 @@
 package common;
 
 import alarmclient.CommandFactoryAlarm;
-import networkclient.CommandFactoryNetwork;;
+import networkclient.CommandFactoryNetwork;
 
 public abstract class CommandFactory
 {

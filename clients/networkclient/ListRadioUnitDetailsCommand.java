@@ -15,7 +15,7 @@ public class ListRadioUnitDetailsCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.LIST_RADIO_UNIT_DETAILS.ordinal() + "=";
+    String messageToBuild = MenuOption.LIST_RADIO_UNIT_DETAILS.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

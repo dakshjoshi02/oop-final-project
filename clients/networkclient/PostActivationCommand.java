@@ -14,7 +14,7 @@ public class PostActivationCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.POST_ACTIVATION.ordinal() + "=";
+    String messageToBuild = MenuOption.POST_ACTIVATION.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

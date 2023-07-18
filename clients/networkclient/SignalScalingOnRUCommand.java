@@ -15,7 +15,7 @@ public class SignalScalingOnRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.SIGNAL_SCALING_ON_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.SIGNAL_SCALING_ON_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

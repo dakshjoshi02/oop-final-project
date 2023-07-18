@@ -15,7 +15,7 @@ public class ListRUsByStateCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.LIST_RUS_BY_STATE.ordinal() + "=";
+    String messageToBuild = MenuOption.LIST_RUS_BY_STATE.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

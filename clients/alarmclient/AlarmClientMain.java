@@ -12,12 +12,12 @@ public class AlarmClientMain {
     {
         ui.printUI();
         String messageToServer = ui.retrieveUserInput();
+        System.out.println("DEBUG: messageToServer=" + messageToServer);
 
         if (!messageToServer.isEmpty())
         {
             clientMessageHandler.sendMessage(messageToServer);
             MessageContainer messageContainer = clientMessageHandler.retrieveMessage();
-            System.out.println("message container before display response: " + messageContainer.menuOption + " " + messageContainer.messageContents);
             ui.displayResponse(messageContainer);
         }
     }

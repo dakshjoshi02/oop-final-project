@@ -15,7 +15,7 @@ public class ListRUsByBandCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.LIST_RUS_BY_BAND.ordinal() + "=";
+    String messageToBuild = MenuOption.LIST_RUS_BY_BAND.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }

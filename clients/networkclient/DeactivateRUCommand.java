@@ -14,7 +14,7 @@ public class DeactivateRUCommand extends Command
   @Override
   public String execute()
   {
-    String messageToBuild = MenuOption.DEACTIVATE_RU.ordinal() + "=";
+    String messageToBuild = MenuOption.DEACTIVATE_RU.ordinal() + ":";
     messageToBuild += super.execute();
     return messageToBuild;
   }
