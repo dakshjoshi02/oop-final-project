@@ -6,17 +6,16 @@ import java.util.List;
 
 public class ActivateRUCommand extends Command
 {
+    public ActivateRUCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  public ActivateRUCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
-
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.ACTIVATE_RU.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.ACTIVATE_RU.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

@@ -6,16 +6,16 @@ import java.util.List;
 
 public class DeactivateRUCommand extends Command
 {
-  public DeactivateRUCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
+    public DeactivateRUCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.DEACTIVATE_RU.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.DEACTIVATE_RU.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

@@ -6,17 +6,16 @@ import java.util.List;
 
 public class ListRadioUnitDetailsCommand extends Command
 {
+    public ListRadioUnitDetailsCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  public ListRadioUnitDetailsCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
-
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.LIST_RADIO_UNIT_DETAILS.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.LIST_RADIO_UNIT_DETAILS.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

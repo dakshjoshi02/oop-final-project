@@ -6,16 +6,16 @@ import java.util.List;
 
 public class DecommissionRUCommand extends Command
 {
-  public DecommissionRUCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
+    public DecommissionRUCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.DECOMMISSION_RU.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.DECOMMISSION_RU.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

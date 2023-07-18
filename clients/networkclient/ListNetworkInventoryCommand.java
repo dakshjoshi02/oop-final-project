@@ -6,16 +6,16 @@ import java.util.List;
 
 public class ListNetworkInventoryCommand extends Command
 {
-  public ListNetworkInventoryCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
+    public ListNetworkInventoryCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.LIST_NETWORK_INVENTORY.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.LIST_NETWORK_INVENTORY.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }

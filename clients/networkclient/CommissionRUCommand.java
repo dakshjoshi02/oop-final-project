@@ -6,16 +6,16 @@ import java.util.List;
 
 public class CommissionRUCommand extends Command
 {
-  public CommissionRUCommand(String outputText, List<String> inputs)
-  {
-    super(outputText, inputs);
-  }
+    public CommissionRUCommand(String outputText, List<String> inputs)
+    {
+        super(outputText, inputs);
+    }
 
-  @Override
-  public String execute()
-  {
-    String messageToBuild = MenuOption.COMMISSION_RU.ordinal() + ":";
-    messageToBuild += super.execute();
-    return messageToBuild;
-  }
+    @Override
+    public String execute()
+    {
+        String messageToBuild = MenuOption.COMMISSION_RU.ordinal() + ":";
+        messageToBuild += super.execute();
+        return messageToBuild;
+    }
 }
