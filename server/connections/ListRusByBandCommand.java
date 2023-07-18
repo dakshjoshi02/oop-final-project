@@ -4,10 +4,11 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
+import ruunit.CommonType.FrequencyBand;
 
 public class ListRusByBandCommand extends Command
 {
-    private String bandFreq;
+    private FrequencyBand freqBand;
 
     public ListRusByBandCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -15,7 +16,7 @@ public class ListRusByBandCommand extends Command
         
         if (inputs.size() == 1)
         {
-            bandFreq = inputs.get(0);
+            freqBand = FrequencyBand.values()[Integer.parseInt(inputs.get(0))];
         }
         else
         {

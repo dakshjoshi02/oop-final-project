@@ -3,18 +3,20 @@ package rusystem;
 import java.util.HashMap;
 
 import common.Response;
+import ruunit.Carrier;
+import ruunit.CommonType.RadioUnitAlarmStatusLevels;
 
 public class ManagedRadioUnit
 {
-    private RUState activatedState;
-    private RUState idleState;
-    private RUState deactivatedState;
+    private RUStateMachine activatedState;
+    private RUStateMachine idleState;
+    private RUStateMachine deactivatedState;
 
-    protected void setDeactivatedState(RUState deactivatedState) {
+    protected void setDeactivatedState(RUStateMachine deactivatedState) {
         this.deactivatedState = deactivatedState;
     }
 
-    private RUState currentState;
+    private RUStateMachine currentState;
 
     private String ipAddress;
     private String radioUnitName;
@@ -180,23 +182,23 @@ public class ManagedRadioUnit
         this.alarmStatus = alarmStatus;
     }
 
-    protected RUState getCurrentState() {
+    protected RUStateMachine getCurrentState() {
         return this.currentState;
     }
 
-    protected void setCurrentState(RUState currentState) {
+    protected void setCurrentState(RUStateMachine currentState) {
         this.currentState = currentState;
     }
 
-    protected RUState getActivatedState() {
+    protected RUStateMachine getActivatedState() {
         return this.activatedState;
     }
 
-    protected RUState getIdleState() {
+    protected RUStateMachine getIdleState() {
         return this.idleState;
     }
 
-    protected RUState getDeactivatedState() {
+    protected RUStateMachine getDeactivatedState() {
         return this.deactivatedState;
     }
 }

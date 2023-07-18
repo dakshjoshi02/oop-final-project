@@ -66,8 +66,15 @@ public class CommonType
             return value;
         }
     }
+    
+    public enum RUState
+    {
+        IDLE,
+        DEACTIVATED,
+        ACTIVATED
+    }
 
-    public enum RUAlarmStatusLevel
+    public enum RadioUnitAlarmStatusLevels
     {
         CRITICAL,
         MAJOR,

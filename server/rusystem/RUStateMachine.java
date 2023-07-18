@@ -2,7 +2,7 @@ package rusystem;
 /*
  * defines an interface for ru state machine
  */
-public interface RUState {
+public interface RUStateMachine {
     void setup();
     void activate();
     void deactivate();

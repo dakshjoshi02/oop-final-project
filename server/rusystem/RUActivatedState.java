@@ -1,6 +1,6 @@
 package rusystem;
 
-public class RUActivatedState implements RUState {
+public class RUActivatedState implements RUStateMachine {
 
     ManagedRadioUnit ru;
 

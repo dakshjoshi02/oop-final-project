@@ -4,11 +4,12 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
+import ruunit.CommonType.RadioUnitAlarmStatusLevels;
 
 public class SetAlarmOnRuCommand extends Command
 {
     private String ipAddress;
-    private String alarmStatus;
+    private RadioUnitAlarmStatusLevels alarmStatus;
 
     public SetAlarmOnRuCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -17,7 +18,7 @@ public class SetAlarmOnRuCommand extends Command
         if (inputs.size() == 2)
         {
             ipAddress = inputs.get(0);
-            alarmStatus = inputs.get(1);
+            alarmStatus = RadioUnitAlarmStatusLevels.values()[Integer.parseInt(inputs.get(1))];
         }
         else
         {

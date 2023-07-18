@@ -4,10 +4,11 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
+import ruunit.CommonType.RUState;
 
 public class ListRusByStateCommand extends Command
 {
-    private String ruState;
+    private RUState ruState;
 
     public ListRusByStateCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -15,7 +16,7 @@ public class ListRusByStateCommand extends Command
         
         if (inputs.size() == 1)
         {
-            ruState = inputs.get(0);
+            ruState = RUState.values()[Integer.parseInt(inputs.get(0))];
         }
         else
         {
