@@ -5,6 +5,7 @@ import common.MenuOption;
 import common.CommandFactory;
 import common.StubCommand;
 import java.util.Arrays;
+import java.util.ArrayList;
 
 public class CommandFactoryNetwork extends CommandFactory
 {
@@ -29,11 +30,11 @@ public class CommandFactoryNetwork extends CommandFactory
             case DEACTIVATE_RU:
                 return new DeactivateRUCommand("Deactivate RU", Arrays.asList("IP Address"));
             case SETUP_CARRIER_ON_RU:
-                return new SetupCarrierOnRUCommand("Setup Carrier On RU", Arrays.asList("IP Address"));
+                return new SetupCarrierOnRUCommand("Setup Carrier On RU", Arrays.asList("IP Address", "Carrier"));
             case MODIFY_CARRIER_ON_RU:
-                return new ModifyCarrierOnRUCommand("Modify Carrier On RU", Arrays.asList("IP Address"));
+                return new ModifyCarrierOnRUCommand("Modify Carrier On RU", Arrays.asList("IP Address", "Carrier Id", "Band Frequency"));
             case REMOVE_CARRIER_ON_RU:
-                return new RemoveCarrierOnRUCommand("Remove Carrier On RU", Arrays.asList("IP Address"));
+                return new RemoveCarrierOnRUCommand("Remove Carrier On RU", Arrays.asList("IP Address", "Carrier Id"));
             case REMOVE_ALL_CARRIERS_ON_RU:
                 return new RemoveAllCarriersOnRUCommand("Remove All Carriers On RU", Arrays.asList("IP Address"));
             case SIGNAL_SCALING_ON_RU:
@@ -43,17 +44,17 @@ public class CommandFactoryNetwork extends CommandFactory
             case PERFORM_SELF_DIAGNOSTICS:
                 return new PerformSelfDiagnosticsCommand("Perform Self Diagnostics", Arrays.asList("IP Address"));
             case LIST_NETWORK_INVENTORY:
-                return new ListNetworkInventoryCommand("List Network Inventory", Arrays.asList("IP Address"));
-            case LIST_RUS_BY_STNADARD:
-                return new ListRUsByStandardCommand("List RUs By Standard", Arrays.asList("IP Address"));
+                return new ListNetworkInventoryCommand("List Network Inventory", new ArrayList<String>());
+            case LIST_RUS_BY_STANDARD:
+                return new ListRUsByStandardCommand("List RUs By Standard", Arrays.asList("RAT Type"));
             case LIST_RUS_BY_STATE:
-                return new ListRUsByStateCommand("List RUs By State", Arrays.asList("IP Address"));
+                return new ListRUsByStateCommand("List RUs By State", Arrays.asList("RU State"));
             case LIST_RUS_BY_BAND:
-                return new ListRUsByBandCommand("List RUs By Band", Arrays.asList("IP Address"));
+                return new ListRUsByBandCommand("List RUs By Band", Arrays.asList("Band Frequency"));
             case LIST_RADIO_UNIT_DETAILS:
                 return new ListRadioUnitDetailsCommand("List Radio Unit Details", Arrays.asList("IP Address"));
             case SET_ALARM_ON_RU:
-                return new SetAlarmOnRUCommand("Set Alarm on RU", Arrays.asList("IP Address"));
+                return new SetAlarmOnRUCommand("Set Alarm on RU", Arrays.asList("IP Address", "Alarm Status"));
             default:
                 System.out.println("Invalid menuOption");
                 return new StubCommand();
