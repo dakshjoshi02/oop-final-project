@@ -1,11 +1,17 @@
 package networkclient;
 
-import common.*;
+import common.Command;
+import common.MenuOption;
+import common.CommandFactory;
+import common.StubCommand;
 import java.util.Arrays;
 
-public class CommandFactoryNetwork extends CommandFactory {
-    public Command createCommand(MenuOption menuOption) {
-        switch (menuOption) {
+public class CommandFactoryNetwork extends CommandFactory
+{
+    public Command createCommand(MenuOption menuOption)
+    {
+        switch (menuOption)
+        {
             case COMMISSION_RU:
                 return new CommissionRUCommand("Commission RU", Arrays.asList("IP Address"));
             case DECOMMISSION_RU:
@@ -46,6 +52,8 @@ public class CommandFactoryNetwork extends CommandFactory {
                 return new ListRUsByBandCommand("List RUs By Band", Arrays.asList("IP Address"));
             case LIST_RADIO_UNIT_DETAILS:
                 return new ListRadioUnitDetailsCommand("List Radio Unit Details", Arrays.asList("IP Address"));
+            case SET_ALARM_ON_RU:
+                return new SetAlarmOnRUCommand("Set Alarm on RU", Arrays.asList("IP Address"));
             default:
                 System.out.println("Invalid menuOption");
                 return new StubCommand();

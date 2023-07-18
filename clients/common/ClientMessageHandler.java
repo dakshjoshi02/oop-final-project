@@ -7,10 +7,6 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/*
- * @brief Responsible for sending messages to the server, receiving messages
- *        from the server, and parsing them into a usable format
- */
 public class ClientMessageHandler
 {
   private final int port;
@@ -19,11 +15,6 @@ public class ClientMessageHandler
   private ObjectOutputStream oos;
   private ObjectInputStream ois;
 
-  /*
-   * @brief Constructor that creates the connection to the server and creates
-   *        the streams for sending/receiving messages. Loops until the server connection
-   *        is successful.
-   */
   public ClientMessageHandler(int port)
   {
     this.port = port;
@@ -47,10 +38,6 @@ public class ClientMessageHandler
     }
   }
   
-  /*
-   * @brief Attempts to connect to the server
-   * @return True or false depending on if it connected to the server correctly
-   */
   public boolean attemptToConnect()
   {
     boolean isSuccessful = false;
@@ -69,10 +56,6 @@ public class ClientMessageHandler
     return isSuccessful;
   }
 
-  /*
-   * @brief Sends a message to the server
-   * @param messageToServer A string with the user inputted information packed
-   */
   public void sendMessage(String messageToServer)
   {
     try
@@ -85,10 +68,6 @@ public class ClientMessageHandler
     }
   }
 
-  /*
-   * @brief Retrieves the next message from the server in a packed format
-   * @return The message is a usable format
-   */
   public MessageContainer retrieveMessage()
   {
     MessageContainer messageContainer = new MessageContainer();
@@ -105,11 +84,6 @@ public class ClientMessageHandler
     return messageContainer;
   }
 
-  /*
-   * @brief Parses the message from the server into a usable format
-   * @param messageFromServer The message in a packed format
-   * @return The message in a usable format
-   */
   public MessageContainer parseServerMessage(String messageFromServer)
   {
     MessageContainer messageContainer = new MessageContainer();

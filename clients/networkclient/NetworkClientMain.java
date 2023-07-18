@@ -8,9 +8,6 @@ public class NetworkClientMain {
     private static UI ui;
     private static ClientMessageHandler clientMessageHandler;
 
-    /*
-     * @brief The client loop that will loop forever
-     */
     private static void clientLoop()
     {
         ui.printUI();
@@ -24,10 +21,6 @@ public class NetworkClientMain {
         ui.displayResponse(messageContainer);
         }
     }
-
-    /*
-     * @brief The main function that starts the program
-     */
     
     public static void main(String[] args) {
         NetworkView view = new NetworkView();

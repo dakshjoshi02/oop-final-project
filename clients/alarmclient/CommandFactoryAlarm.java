@@ -1,11 +1,17 @@
 package alarmclient;
 
-import common.*;
+import common.Command;
+import common.MenuOption;
+import common.CommandFactory;
+import common.StubCommand;
 import java.util.Arrays;
 
-public class CommandFactoryAlarm extends CommandFactory {
-    public Command createCommand(MenuOption menuOption) {
-        switch (menuOption) {
+public class CommandFactoryAlarm extends CommandFactory
+{
+    public Command createCommand(MenuOption menuOption)
+    {
+        switch (menuOption)
+        {
             case GET_NETWORK_ALARMS:
                 return new GetNetworkAlarmsCommand("Get Network Alarms", Arrays.asList("IP Address"));
             case ACKNOWLEDGE_ALARM:

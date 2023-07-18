@@ -2,18 +2,23 @@ package common;
 
 import alarmclient.CommandFactoryAlarm;
 import networkclient.CommandFactoryNetwork;;
-import java.util.ArrayList;
-import java.util.Arrays;
 
-public abstract class CommandFactory {
+public abstract class CommandFactory
+{
     public abstract Command createCommand(MenuOption menuOption);
 
-    public static CommandFactory getInstance(String type) {
-        if ("Network".equalsIgnoreCase(type)) {
+    public static CommandFactory getInstance(String type)
+    {
+        if ("Network".equalsIgnoreCase(type))
+        {
             return new CommandFactoryNetwork();
-        } else if ("Alarm".equalsIgnoreCase(type)) {
+        }
+        else if ("Alarm".equalsIgnoreCase(type))
+        {
             return new CommandFactoryAlarm();
-        } else {
+        }
+        else
+        {
             throw new IllegalArgumentException("Invalid CommandFactory type");
         }
     }
