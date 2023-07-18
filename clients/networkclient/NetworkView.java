@@ -1,6 +1,7 @@
 package networkclient;
 
-import common.Types;
+import java.util.Map;
+import java.util.TreeMap;
 import common.UI;
 import common.MenuOption;
 import common.MessageContainer;
@@ -73,7 +74,7 @@ public class NetworkView implements UI {
         Map<MenuOption, Command> newMap = new TreeMap<MenuOption, Command>();
         for (MenuOption menuOption : MenuOption.values())
         {
-        Command newCommand = CommandFactory.getInstance().createCommand(menuOption);
+        Command newCommand = CommandFactory.getInstance("Network").createCommand(menuOption);
         newMap.put(menuOption, newCommand);
         }
         return newMap;

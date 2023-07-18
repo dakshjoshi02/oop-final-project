@@ -1,6 +1,7 @@
 package networkclient;
 
 import common.Command;
+import common.MenuOption;
 import java.util.List;
 
 /*

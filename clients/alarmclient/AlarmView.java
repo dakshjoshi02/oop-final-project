@@ -1,6 +1,7 @@
 package alarmclient;
 
-import common.Types;
+import java.util.Map;
+import java.util.TreeMap;
 import common.UI;
 import common.MenuOption;
 import common.MessageContainer;
@@ -73,7 +74,7 @@ public class AlarmView implements UI {
         Map<MenuOption, Command> newMap = new TreeMap<MenuOption, Command>();
         for (MenuOption menuOption : MenuOption.values())
         {
-        Command newCommand = CommandFactory.getInstance().createCommand(menuOption);
+        Command newCommand = CommandFactory.getInstance("Alarm").createCommand(menuOption);
         newMap.put(menuOption, newCommand);
         }
         return newMap;

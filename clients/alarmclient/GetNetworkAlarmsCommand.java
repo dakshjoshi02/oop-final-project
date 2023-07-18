@@ -1,6 +1,7 @@
 package alarmclient;
 
 import common.Command;
+import common.MenuOption;
 import java.util.List;
 
 /*
@@ -13,9 +14,9 @@ public class GetNetworkAlarmsCommand extends Command
    * @param outputText The text prompt to be displayed 
    * @param inputs The initial inputs to be asked for 
    */
-  public GetNetworkAlarmsCommand(String outputText)
+  public GetNetworkAlarmsCommand(String outputText, List<String> inputs)
   {
-    super(outputText);
+    super(outputText, inputs);
   }
 
   /*

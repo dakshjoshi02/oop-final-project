@@ -1,6 +1,7 @@
 package networkclient;
 
 import common.Command;
+import common.MenuOption;
 import java.util.List;
 
 /*
@@ -13,9 +14,9 @@ public class ListNetworkInventoryCommand extends Command
    * @param outputText The text prompt to be displayed 
    * @param inputs The initial inputs to be asked for 
    */
-  public ListNetworkInventoryCommand(String outputText)
+  public ListNetworkInventoryCommand(String outputText, List<String> inputs)
   {
-    super(outputText);
+    super(outputText, inputs);
   }
 
   /*

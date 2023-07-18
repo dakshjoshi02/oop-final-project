@@ -1,6 +1,6 @@
 package networkclient;
 
-import common.CommandFactory;
+import common.*;
 import java.util.Arrays;
 
 public class CommandFactoryNetwork extends CommandFactory {
@@ -37,7 +37,7 @@ public class CommandFactoryNetwork extends CommandFactory {
             case PERFORM_SELF_DIAGNOSTICS:
                 return new PerformSelfDiagnosticsCommand("Perform Self Diagnostics", Arrays.asList("IP Address"));
             case LIST_NETWORK_INVENTORY:
-                return new ListNetworkInventoryCommand("List Network Inventory");
+                return new ListNetworkInventoryCommand("List Network Inventory", Arrays.asList("IP Address"));
             case LIST_RUS_BY_STNADARD:
                 return new ListRUsByStandardCommand("List RUs By Standard", Arrays.asList("IP Address"));
             case LIST_RUS_BY_STATE:

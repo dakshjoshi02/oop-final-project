@@ -1,5 +1,9 @@
 package networkclient;
 
+import common.UI;
+import common.ClientMessageHandler;
+import common.MessageContainer;
+
 public class NetworkClientMain {
     private static UI ui;
     private static ClientMessageHandler clientMessageHandler;
