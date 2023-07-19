@@ -59,12 +59,11 @@ public class Connection implements Observer, Runnable
                 e.printStackTrace();
             }
         }
-        else
-        {
-            System.out.println("Invalid command string");
-            return null;
-        }
         
+        // If the inputParameters are bad, it will create a stub command and push that to the processing
+        // queue so that the server will respond to the client (if the server doesn't respond to the
+        // client, the client will get stuck). We need to continue with the normal sequence of pushing
+        // the command to the processing queue to keep it thread safe rather than calling sendResponse directly
         Command command = CommandFactory.getInstance().createCommand(eventId, inputParameters);
         // Bind the observerId (connection identifier) to the command, so we can get the response
         command.observerId = observerId;

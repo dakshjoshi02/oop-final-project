@@ -23,10 +23,15 @@ public class SetupCarrierOnRuCommand extends Command
         {
             ipAddress = inputs.get(0);
             String carrierAsString = inputs.get(1);
+
             List<String> carrierSegments = new ArrayList<String>(Arrays.asList(carrierAsString.split(";")));
             if (carrierSegments.size() == 3)
             {
                 List<String> strPorts = new ArrayList<String>(Arrays.asList(carrierSegments.get(0).split("-")));
+                if (strPorts.size() == 0)
+                {
+                    throw new Exception("ABN: Wrong number of input strings passed to ctor()");
+                }
                 List<RFPort> rfPorts = new ArrayList<RFPort>();
                 for (String strPort : strPorts)
                 {
@@ -35,6 +40,10 @@ public class SetupCarrierOnRuCommand extends Command
                 FrequencyBand frequencyBand = FrequencyBand.values()[Integer.parseInt(carrierSegments.get(1))];
                 double transmittingPower = Double.parseDouble(carrierSegments.get(2));
                 carrier = new Carrier(rfPorts, frequencyBand, transmittingPower);
+            }
+            else
+            {
+                throw new Exception("ABN: Wrong number of input strings passed to ctor()");
             }
         }
         else

@@ -50,7 +50,7 @@ public class AlarmView implements UI {
         String messageResult = response.isSuccessful ? "SUCCESS" : "INPUT ERROR";
 
         System.out.println("\n==============================");
-        System.out.println("Content: " + response.responseString);
+        System.out.println(response.responseString);
         System.out.println("==============================");
     }
 
