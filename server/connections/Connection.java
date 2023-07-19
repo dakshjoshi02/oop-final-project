@@ -1,7 +1,6 @@
 package connections;
 
 import java.net.Socket;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
@@ -111,6 +110,7 @@ public class Connection implements Observer, Runnable
                     socket.close();
                 }
                 msgFromClient = (String) obj;
+                System.out.println(msgFromClient);
                 
                 Command command = buildCommand(msgFromClient);
                 if(command != null)
@@ -123,7 +123,7 @@ public class Connection implements Observer, Runnable
         }
         catch(Exception e)
         {
-            System.out.println("Client has disconnected");
+            System.out.println("Client has disconnected!");
         }
     }
 }
