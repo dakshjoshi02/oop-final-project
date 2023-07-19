@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import ruunit.CommonType.FrequencyBand;
+import common.CommonType.FrequencyBand;
 
 public class ModifyCarrierOnRuCommand extends Command
 {

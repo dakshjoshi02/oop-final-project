@@ -87,7 +87,7 @@ public class ClientMessageHandler
 
     public Response parseServerMessage(String messageFromServer)
     {
-        MessageContainer messageContainer = new MessageContainer();
+        Response response = new Response();
         
         List<String> responseSegments = new ArrayList<String>(Arrays.asList(messageFromServer.split(":")));
         

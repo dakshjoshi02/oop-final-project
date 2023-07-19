@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import ruunit.CommonType.RadioUnitAlarmStatusLevels;
+import common.CommonType.RadioUnitAlarmStatusLevels;
 
 public class SetAlarmOnRuCommand extends Command
 {

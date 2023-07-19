@@ -5,32 +5,21 @@ The wireless network management system will be broken down between a server and 
 ## Dependencies
 
 - java sdk
-- make
 - git
 
 ## Server (Network Management, Deployed Network, Network Alarm Monitor)
 
 ### Build
 
-#### Option #1
-
-```bash
-- cd server/
-- make networkmanagement
-- make run
-```
-
-#### Option #2
-
 ```bash
 - cd server/
 
 Linux
-- rm common/*.class networkmanagement/*.class rusystem/*.class alarmmonitor/*.class connections/*.class
-- javac common/*.java networkmanagement/*.java rusystem/*.java alarmmonitor/*.java connections/*.java
+- rm common/*.class networkmanagement/*.class rusystem/*.class connections/*.class
+- javac common/*.java networkmanagement/*.java rusystem/*.java connections/*.java
 Windows
-- del common\*.class networkmanagement\*.class rusystem\*.class alarmmonitor\*.class connections\*.class
-- javac common\*.java networkmanagement\*.java rusystem\*.java alarmmonitor\*.java connections\*.java
+- del common\*.class networkmanagement\*.class rusystem\*.class connections\*.class
+- javac common\*.java networkmanagement\*.java rusystem\*.java connections\*.java
 
 - java networkmanagement.NetworkMain
 ```
@@ -41,25 +30,15 @@ Socket communication to server
 
 ### Build
 
-#### Option #1
-
-```bash
-- cd clients/
-- make networkclient
-- make runnet
-```
-
-#### Option #2
-
 ```bash
 - cd clients/
 
 Linux
-- rm common/*.class networkclient/*.class alarmclient/*.class
-- javac common/*.java networkclient/*.java alarmclient/*.java
+- rm common/*.class networkclient/*.class
+- javac common/*.java networkclient/*.java
 Windows
-- del common\*.class networkclient\*.class alarmclient\*.class
-- javac common\*.java networkclient\*.java alarmclient\*.java
+- del common\*.class networkclient\*.class
+- javac common\*.java networkclient\*.java
 
 - java networkclient.NetworkClientMain
 ```
@@ -70,25 +49,15 @@ Socket communication to server
 
 ### Build
 
-#### Option #1
-
-```bash
-- cd clients/
-- make alarmclient
-- make runalarm
-```
-
-#### Option #2
-
 ```bash
 - cd clients/
 
 Linux
-- rm common/*.class networkclient/*.class alarmclient/*.class
-- javac common/*.java networkclient/*.java alarmclient/*.java
+- rm common/*.class alarmclient/*.class
+- javac common/*.java alarmclient/*.java
 Windows
-- del common\*.class networkclient\*.class alarmclient\*.class
-- javac common\*.java networkclient\*.java alarmclient\*.java
+- del common\*.class alarmclient\*.class
+- javac common\*.java alarmclient\*.java
 
 - java alarmclient.AlarmClientMain
 ```

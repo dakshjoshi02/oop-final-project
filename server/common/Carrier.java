@@ -1,9 +1,8 @@
-package ruunit;
+package common;
 
 import java.util.List;
-
-import ruunit.CommonType.FrequencyBand;
-import ruunit.CommonType.RFPort;
+import common.CommonType.FrequencyBand;
+import common.CommonType.RFPort;
 
 public class Carrier
 {

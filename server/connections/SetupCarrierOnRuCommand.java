@@ -6,9 +6,9 @@ import java.util.Arrays;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import ruunit.CommonType.FrequencyBand;
-import ruunit.CommonType.RFPort;
-import ruunit.Carrier;
+import common.CommonType.FrequencyBand;
+import common.CommonType.RFPort;
+import common.Carrier;
 
 public class SetupCarrierOnRuCommand extends Command
 {

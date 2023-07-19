@@ -1,4 +1,4 @@
-package ruunit;
+package common;
 
 // Needs to stay as a clone of the client so that the user input & server/client messaging works properly (based off of the enum's ordinals)
 // Please update both places if you change something, could probably build this and include it in both builds but then the build instructions would need to change

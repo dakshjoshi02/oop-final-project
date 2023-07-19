@@ -3,8 +3,8 @@ package rusystem;
 import java.util.HashMap;
 
 import common.Response;
-import ruunit.Carrier;
-import ruunit.CommonType.RadioUnitAlarmStatusLevels;
+import common.Carrier;
+import common.CommonType.RadioUnitAlarmStatusLevels;
 
 public class ManagedRadioUnit
 {
@@ -32,9 +32,6 @@ public class ManagedRadioUnit
         this.deactivatedState = new RUDeactivatedState(this);
         this.currentState = idleState;
         this.alarmStatus = RadioUnitAlarmStatusLevels.NO_ALARM;
-        // this.radioUnitName
-        // this.radioVendor
-        // this.ratType
     }
     
     public Response triggerEvent(ManagedRuEvent managedRuEvent)
