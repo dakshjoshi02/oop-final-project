@@ -2,7 +2,7 @@ package alarmclient;
 
 import common.UI;
 import common.ClientMessageHandler;
-import common.MessageContainer;
+import common.Response;
 
 public class AlarmClientMain {
     private static UI ui;
@@ -16,8 +16,8 @@ public class AlarmClientMain {
         if (!messageToServer.isEmpty())
         {
             clientMessageHandler.sendMessage(messageToServer);
-            MessageContainer messageContainer = clientMessageHandler.retrieveMessage();
-            ui.displayResponse(messageContainer);
+            Response response = clientMessageHandler.retrieveMessage();
+            ui.displayResponse(response);
         }
     }
 

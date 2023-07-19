@@ -7,7 +7,7 @@ public interface UI
 {
     public void printUI();
 
-    public void displayResponse(MessageContainer messageContainer);
+    public void displayResponse(Response response);
 
     public String retrieveUserInput();
 }

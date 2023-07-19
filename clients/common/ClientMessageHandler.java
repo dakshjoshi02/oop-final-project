@@ -4,6 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -69,47 +70,34 @@ public class ClientMessageHandler
         }
     }
 
-    public MessageContainer retrieveMessage()
+    public Response retrieveMessage()
     {
-        MessageContainer messageContainer = new MessageContainer();
+        Response response = new Response();
         try
         {
-            String responseMessageFromServer = (String) ois.readObject();
-            messageContainer = parseServerMessage(responseMessageFromServer);
+            String responseString = (String) ois.readObject();
+            response = parseServerMessage(responseString);
         }
         catch(Exception e)
         {
             System.out.println("Error occurred retrieving a message");
         }
-        return messageContainer;
+        return response;
     }
 
-    public MessageContainer parseServerMessage(String messageFromServer)
+    public Response parseServerMessage(String messageFromServer)
     {
         MessageContainer messageContainer = new MessageContainer();
-        boolean isSuccessful = false;
-        try
+        
+        List<String> responseSegments = new ArrayList<String>(Arrays.asList(messageFromServer.split(":")));
+        
+        if (responseSegments.size() != 2)
         {
-            String messageOption = "";
-            for (int i = 0; i < messageFromServer.length(); i++)
-            {
-                if (messageFromServer.charAt(i) == '=')
-                {
-                    messageOption = messageFromServer.substring(0, i);
-                    MenuOption selectedOption = MenuOption.values()[Integer.parseInt(messageOption)];
-                    messageContainer.menuOption = selectedOption;
-                    isSuccessful = (Integer.parseInt(messageFromServer.substring(i + 1, i + 2)) == 1);
-                    messageContainer.isSuccessful = isSuccessful;
-                    String msg = messageFromServer.substring(i + 3, messageFromServer.length());
-                    messageContainer.messageContents = new ArrayList<String>(Arrays.asList(msg.split(" ")));
-                    break;
-                }
-            }
+            new Response(false, "The response from the server is malformed");
         }
-        catch(Exception e)
-        {
-            System.out.println("Error parsing the message from the server");
-        }
-        return messageContainer;
+        
+        boolean isSuccessful = responseSegments.get(0).equals("1");
+        String responseString = responseSegments.get(1);
+        return new Response(isSuccessful, responseString);
     }
 }

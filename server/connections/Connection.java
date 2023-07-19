@@ -39,18 +39,6 @@ public class Connection implements Observer, Runnable
             e.printStackTrace();
         }
     }
-
-    private void sendMessage(String messageToClient)
-    {
-        try
-        {
-            oos.writeObject(messageToClient);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
     
     private Command buildCommand(String msgFromClient)
     {
@@ -84,11 +72,28 @@ public class Connection implements Observer, Runnable
         return command;
     }
 
+    private String formatResponse(Response response)
+    {
+        String responseString = "";
+        
+        responseString += (response.isSuccessful ? 1 : 0) + ":";
+        responseString += response.responseString + ":";
+        
+        return responseString;
+    }
+
     @Override
     public void sendResponse(Response response)
     {
-        // Format this later
-        sendMessage(response.responseMessage);
+        String responseString = formatResponse(response);
+        try
+        {
+            oos.writeObject(responseString);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

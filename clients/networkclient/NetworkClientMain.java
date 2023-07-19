@@ -2,7 +2,7 @@ package networkclient;
 
 import common.UI;
 import common.ClientMessageHandler;
-import common.MessageContainer;
+import common.Response;
 
 public class NetworkClientMain {
     private static UI ui;
@@ -16,9 +16,8 @@ public class NetworkClientMain {
         if (!messageToServer.isEmpty())
         {
             clientMessageHandler.sendMessage(messageToServer);
-            MessageContainer messageContainer = clientMessageHandler.retrieveMessage();
-            System.out.println("message container before display response: " + messageContainer.menuOption + " " + messageContainer.messageContents);
-            ui.displayResponse(messageContainer);
+            Response response = clientMessageHandler.retrieveMessage();
+            ui.displayResponse(response);
         }
     }
     

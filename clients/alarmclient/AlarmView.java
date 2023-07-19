@@ -3,7 +3,7 @@ package alarmclient;
 import java.util.Map;
 import java.util.TreeMap;
 import common.UI;
-import common.MessageContainer;
+import common.Response;
 import common.Command;
 import common.CommandFactory;
 import common.MenuOption;
@@ -45,13 +45,12 @@ public class AlarmView implements UI {
     }
 
     @Override
-    public void displayResponse(MessageContainer messageContainer)
+    public void displayResponse(Response response)
     {
-        String messageResult = messageContainer.isSuccessful ? "SUCCESS" : "INPUT ERROR";
+        String messageResult = response.isSuccessful ? "SUCCESS" : "INPUT ERROR";
 
         System.out.println("\n==============================");
-        System.out.println("OPERATION: " + messageContainer.menuOption + " = " + messageResult);
-        System.out.println("Content: " + messageContainer.messageContents);
+        System.out.println("Content: " + response.responseString);
         System.out.println("==============================");
     }
 
