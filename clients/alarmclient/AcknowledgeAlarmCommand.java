@@ -16,7 +16,6 @@ public class AcknowledgeAlarmCommand extends Command
     {
         String messageToBuild = MenuOption.ACKNOWLEDGE_ALARM.ordinal() + ":";
         messageToBuild += super.execute();
-        System.out.println(messageToBuild);
         return messageToBuild;
     }
 }
