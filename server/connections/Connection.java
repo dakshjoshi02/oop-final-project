@@ -1,6 +1,7 @@
 package connections;
 
 import java.net.Socket;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
@@ -24,6 +25,7 @@ public class Connection implements Observer, Runnable
     {
         try
         {
+            System.out.println("New client has connected!");
             this.socket = socket;
             
             oos = new ObjectOutputStream(socket.getOutputStream());
@@ -38,22 +40,6 @@ public class Connection implements Observer, Runnable
             e.printStackTrace();
         }
     }
-    
-    private String retrieveMsg()
-    {
-        // Blocking call
-        String msgFromClient = "";
-
-        try
-        {
-            msgFromClient = (String) ois.readObject();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-        return msgFromClient;
-    }
 
     private void sendMessage(String messageToClient)
     {
@@ -61,13 +47,12 @@ public class Connection implements Observer, Runnable
         {
             oos.writeObject(messageToClient);
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             e.printStackTrace();
         }
     }
     
-    // What format are we using for the strings to be sent?
     private Command buildCommand(String msgFromClient)
     {
         // Each field of the string from the msgFromClient will be seperated by a :
@@ -80,7 +65,6 @@ public class Connection implements Observer, Runnable
             try
             {
                 eventId = Event.values()[Integer.parseInt(inputParameters.get(0))];
-                System.out.println(eventId);
                 inputParameters.remove(0);
             }
             catch (NumberFormatException e)
@@ -114,15 +98,32 @@ public class Connection implements Observer, Runnable
     @Override
     public void run()
     {
-        while (true)
+        try
         {
-            String msgFromClient = retrieveMsg();
-            System.out.println(msgFromClient);
-            Command command = buildCommand(msgFromClient);
-            if (command != null)
+            // Check for server side disconnects
+            while (!socket.isClosed())
             {
-                networkManagementController.addToProcessingQueue(command);
+                String msgFromClient = "";
+
+                Object obj = ois.readObject();
+                if (obj == null)
+                {
+                    socket.close();
+                }
+                msgFromClient = (String) obj;
+                
+                Command command = buildCommand(msgFromClient);
+                if(command != null)
+                {
+                    networkManagementController.addToProcessingQueue(command);
+                }
             }
+            oos.close();
+            ois.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Client has disconnected");
         }
     }
 }
