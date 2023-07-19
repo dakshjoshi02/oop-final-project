@@ -79,10 +79,7 @@ public class Connection implements Observer, Runnable
         
         Command command = CommandFactory.getInstance().createCommand(eventId, inputParameters);
         // Bind the observerId (connection identifier) to the command, so we can get the response
-        if (command != null)
-        {
-            command.observerId = observerId;
-        }
+        command.observerId = observerId;
         
         return command;
     }
@@ -110,13 +107,10 @@ public class Connection implements Observer, Runnable
                     socket.close();
                 }
                 msgFromClient = (String) obj;
-                System.out.println(msgFromClient);
                 
                 Command command = buildCommand(msgFromClient);
-                if(command != null)
-                {
-                    networkManagementController.addToProcessingQueue(command);
-                }
+
+                networkManagementController.addToProcessingQueue(command);
             }
             oos.close();
             ois.close();

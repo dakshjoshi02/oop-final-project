@@ -31,7 +31,6 @@ public class SetupCarrierOnRuCommand extends Command
                 for (String strPort : strPorts)
                 {
                     rfPorts.add(RFPort.values()[Integer.parseInt(strPort)]);
-                    System.out.println(strPort);
                 }
                 FrequencyBand frequencyBand = FrequencyBand.values()[Integer.parseInt(carrierSegments.get(1))];
                 double transmittingPower = Double.parseDouble(carrierSegments.get(2));

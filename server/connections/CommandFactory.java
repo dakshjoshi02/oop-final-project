@@ -75,15 +75,13 @@ public class CommandFactory
                 case ACKNOWLEDGE_ALARM:
                     return new AcknowledgeAlarmCommand("Acknowledge Alarm", parameters);
                 default:
-                    System.out.println("Invalid event");
-                    return new StubCommand();
+                    return new StubCommand("Invalid Input");
             }
         }
         catch (Exception e)
         {
-            System.out.println("Implementation error, the wrong number of parameters has been passed to a command");
-            e.printStackTrace();
-            return null;
+            // Need to respond to the client that the input was invalid
+            return new StubCommand("Invalid Input");
         }
     }
 }

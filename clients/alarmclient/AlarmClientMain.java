@@ -12,7 +12,6 @@ public class AlarmClientMain {
     {
         ui.printUI();
         String messageToServer = ui.retrieveUserInput();
-        System.out.println("DEBUG: messageToServer=" + messageToServer);
 
         if (!messageToServer.isEmpty())
         {

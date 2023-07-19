@@ -7,7 +7,7 @@ import common.Response;
 
 public abstract class Command 
 {
-    protected String commandText;
+    public String commandText;
     public Integer observerId;
     
     // Needed for stub command

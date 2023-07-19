@@ -39,7 +39,9 @@ public class NetworkManagementController implements Subject
                 if (processingQueue.size() > 0)
                 {
                     Command command = processingQueue.remove();
+                    System.out.println("Executing: \"" + command.commandText + "\" task");
                     Response response = command.execute();
+                    System.out.println("Sending Response: \"" + command.commandText + "\" task");
                     notifyObserver(command.observerId, response);
                 }
             }
@@ -75,6 +77,7 @@ public class NetworkManagementController implements Subject
     {
         synchronized (lock)
         {
+            System.out.println("Queuing: \"" + command.commandText + "\" task");
             processingQueue.add(command);
         }
     }

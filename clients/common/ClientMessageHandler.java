@@ -48,6 +48,7 @@ public class ClientMessageHandler
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
             isSuccessful = true;
+            System.out.println("Successfully connected to the the server!");
         }
         catch(Exception e)
         {
@@ -89,7 +90,7 @@ public class ClientMessageHandler
         boolean isSuccessful = false;
         try
         {
-            String messageOption = "20";
+            String messageOption = "";
             for (int i = 0; i < messageFromServer.length(); i++)
             {
                 if (messageFromServer.charAt(i) == '=')
