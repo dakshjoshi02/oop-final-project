@@ -2,6 +2,7 @@ package networkclient;
 
 import common.Command;
 import common.MenuOption;
+import common.CommonType.RUState;
 import java.util.List;
 
 public class ListRUsByStateCommand extends Command
@@ -15,7 +16,17 @@ public class ListRUsByStateCommand extends Command
     public String execute()
     {
         String messageToBuild = MenuOption.LIST_RUS_BY_STATE.ordinal() + ":";
-        messageToBuild += super.execute();
+        
+        System.out.println("The below options are the available RU states");
+        System.out.println("---------------------------------------------------");
+        for (RUState ruState : RUState.values())
+        { 
+            System.out.println(ruState.ordinal() + " => " + ruState);
+        }
+        System.out.print("Please select the RU state (ie. \"0\", \"1\", \"2\"): ");
+        String ruState = System.console().readLine();
+        messageToBuild += ruState + ":";
+        
         return messageToBuild;
     }
 }

@@ -32,7 +32,7 @@ public class CommandFactoryNetwork extends CommandFactory
             case SETUP_CARRIER_ON_RU:
                 return new SetupCarrierOnRUCommand("Setup Carrier On RU", Arrays.asList("IP Address", "Carrier"));
             case MODIFY_CARRIER_ON_RU:
-                return new ModifyCarrierOnRUCommand("Modify Carrier On RU", Arrays.asList("IP Address", "Carrier Id", "Band Frequency"));
+                return new ModifyCarrierOnRUCommand("Modify Carrier On RU", Arrays.asList("IP Address", "Carrier Id", "Frequency Band"));
             case REMOVE_CARRIER_ON_RU:
                 return new RemoveCarrierOnRUCommand("Remove Carrier On RU", Arrays.asList("IP Address", "Carrier Id"));
             case REMOVE_ALL_CARRIERS_ON_RU:

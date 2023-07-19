@@ -22,7 +22,7 @@ public class Command
         String messageToBuild = "";
         for (String input : inputs)
         {
-            System.out.print("Please enter your \'" + input + "\': ");
+            System.out.print("Please enter the \'" + input + "\': ");
             String userInput = System.console().readLine();
             messageToBuild += userInput + ":";
         }
