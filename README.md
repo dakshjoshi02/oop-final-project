@@ -7,7 +7,7 @@ The wireless network management system will be broken down between a server and 
 - java sdk
 - git
 
-## Server (Network Management, Deployed Network, Network Alarm Monitor)
+## Network Manager Server
 
 ### Build
 
