@@ -10,7 +10,6 @@ import networkmanagement.NetworkManagementController;
 
 public class ConnectionManager implements Runnable
 {
-    private static ConnectionManager instance = null;
     private NetworkManagementController networkManagementController = null;
     
     public ConnectionManager(NetworkManagementController networkManagementController)
