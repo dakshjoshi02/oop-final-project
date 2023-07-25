@@ -132,6 +132,11 @@ public class ManagedRadioUnit
         return true;
     }
 
+    protected boolean signalScaling() {
+        System.out.println("signal is scalling");
+        return true;
+    }
+
     private Response isTransitionPossible()
     {
         Response response = new Response(true, "That state transition is possible");

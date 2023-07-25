@@ -1,5 +1,7 @@
 package rusystem;
 
+import common.Carrier;
+
 public class RUDeactivatedState implements RUStateMachine {
 
     ManagedRadioUnit ru;
@@ -9,69 +11,82 @@ public class RUDeactivatedState implements RUStateMachine {
     }
 
     @Override
-    public void setup() {
+    public boolean setup() {
         System.out.println("setup");
         ru.setCurrentState(ru.getActivatedState());
+        return true;
     }
 
     @Override
-    public void activate() {
+    public boolean activate() {
         ru.setCurrentState(ru.getActivatedState());
+        return true;
     }
 
     @Override
-    public void deactivate() {
+    public boolean deactivate() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void release() {
+    public boolean release() {
         ru.setCurrentState(ru.getIdleState());
+        return true;
     }
 
     @Override
-    public void setupCarrier() {
+    public boolean setupCarrier(Carrier c) {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void signalScaling() {
+    public boolean signalScaling() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void modifyCarrier(int carrierId, String bandFrequency) {
+    public boolean modifyCarrier(int carrierId, String bandFrequency) {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void removeCarrier(int carrierId) {
+    public boolean removeCarrier(int carrierId) {
         ru.removeCarrier(carrierId);
+        return true;
     }
 
     @Override
-    public void removeAllCarriers() {
+    public boolean removeAllCarriers() {
         ru.removeAllCarriers();
+        return true;
     }
 
     @Override
-    public void performSelfDiagnostics() {
+    public boolean performSelfDiagnostics() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void setAlarmStatus() {
+    public boolean setAlarmStatus() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void acknowledgeAlarm() {
+    public boolean acknowledgeAlarm() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void postActivation() {
+    public boolean postActivation() {
         System.out.println("Deactivated, No Action Performed");
+        return false;
     }
 
     @Override

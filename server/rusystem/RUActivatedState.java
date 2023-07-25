@@ -1,5 +1,7 @@
 package rusystem;
 
+import common.Carrier;
+
 public class RUActivatedState implements RUStateMachine {
 
     ManagedRadioUnit ru;
@@ -9,72 +11,80 @@ public class RUActivatedState implements RUStateMachine {
     }
 
     @Override
-    public void setup() {
+    public boolean setup() {
         System.out.println("Activated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void deactivate() {
+    public boolean deactivate() {
         // ru.deactivate();
         ru.setCurrentState(ru.getActivatedState());
+        return true;
     }
 
     @Override
-    public void activate() {
+    public boolean activate() {
         System.out.println("Activated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void release() {
+    public boolean release() {
         System.out.println("Activated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void setupCarrier() {
-        // TODO: set up carrier
-        // ru.setupCarrier();
+    public boolean setupCarrier(Carrier c) {
+        return ru.setupCarrier(c);
     }
 
     @Override
-    public void signalScaling() {
-        // TODO: signal scaling
-        // ru.signalScaling();
+    public boolean signalScaling() {
+        return ru.signalScaling();
     }
 
     @Override
-    public void modifyCarrier(int carrierId, String bandFrequency) {
-        ru.modifyCarrier(carrierId, bandFrequency);
+    public boolean modifyCarrier(int carrierId, String bandFrequency) {
+        return ru.modifyCarrier(carrierId, bandFrequency);
     }
 
     @Override
-    public void removeCarrier(int carrierId) {
+    public boolean removeCarrier(int carrierId) {
         System.out.println("Activated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void removeAllCarriers() {
+    public boolean removeAllCarriers() {
         System.out.println("Activated, No Action Performed");
+        return false;
     }
 
     @Override
-    public void performSelfDiagnostics() {
+    public boolean performSelfDiagnostics() {
         // TODO: perform self diagnostics
         ru.performSelfDiagnostics();
+        return true;
     }
 
     @Override
-    public void setAlarmStatus() {
-        // ru.setAlarmStatus();
+    public boolean setAlarmStatus() {
+        ru.setAlarmStatus();
+        return true
     }
 
     @Override
-    public void acknowledgeAlarm() {
+    public boolean acknowledgeAlarm() {
+        ru.acknowledgeAlarm();
+        return true;
+    }
+
+    @Override
+    public boolean postActivation() {
         System.out.println("Activated, No Action Performed");
-    }
-
-    @Override
-    public void postActivation() {
-        System.out.println("Activated, No Action Performed");
+        return true;
     }
 
     @Override

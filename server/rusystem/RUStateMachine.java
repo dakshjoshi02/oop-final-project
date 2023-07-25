@@ -1,19 +1,22 @@
 package rusystem;
+
+import common.Carrier;
+
 /*
  * defines an interface for ru state machine
  */
 public interface RUStateMachine {
-    void setup();
-    void activate();
-    void deactivate();
-    void release();
-    void setupCarrier(); // input carrier
-    void signalScaling(); 
-    void modifyCarrier(int band, String frequency); // carrier related
-    void removeCarrier(int carrierId); // carrier id
-    void removeAllCarriers();
-    void setAlarmStatus();
-    void postActivation();
-    void performSelfDiagnostics();
-    void acknowledgeAlarm();
+    boolean setup();
+    boolean activate();
+    boolean deactivate();
+    boolean release();
+    boolean setupCarrier(Carrier c); // input carrier
+    boolean signalScaling(); 
+    boolean modifyCarrier(int band, String frequency); // carrier related
+    boolean removeCarrier(int carrierId); // carrier id
+    boolean removeAllCarriers();
+    boolean setAlarmStatus();
+    boolean postActivation();
+    boolean performSelfDiagnostics();
+    boolean acknowledgeAlarm();
 }
