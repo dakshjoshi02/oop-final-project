@@ -1,6 +1,6 @@
 package rusystem;
 
-import common.Carrier;
+import java.util.List;
 
 /*
  * defines an interface for ru state machine
@@ -10,12 +10,12 @@ public interface RUStateMachine {
     boolean activate();
     boolean deactivate();
     boolean release();
-    boolean setupCarrier(Carrier c); // input carrier
+    boolean setupCarrier(List<String> msg); // input carrier information, frequency, vendor, name etc...
     boolean signalScaling(); 
-    boolean modifyCarrier(int band, String frequency); // carrier related
+    boolean modifyCarrier(List<String> msg); // carrier id + frequency related
     boolean removeCarrier(int carrierId); // carrier id
     boolean removeAllCarriers();
-    boolean setAlarmStatus();
+    boolean setAlarmStatus(String alarm);
     boolean postActivation();
     boolean performSelfDiagnostics();
     boolean acknowledgeAlarm();

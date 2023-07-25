@@ -1,6 +1,6 @@
 package rusystem;
 
-import common.Carrier;
+import java.util.List;
 
 public class RUActivatedState implements RUStateMachine {
 
@@ -36,8 +36,8 @@ public class RUActivatedState implements RUStateMachine {
     }
 
     @Override
-    public boolean setupCarrier(Carrier c) {
-        return ru.setupCarrier(c);
+    public boolean setupCarrier(List<String> msg) {
+        return ru.setupCarrier(msg);
     }
 
     @Override
@@ -70,9 +70,9 @@ public class RUActivatedState implements RUStateMachine {
     }
 
     @Override
-    public boolean setAlarmStatus() {
-        ru.setAlarmStatus();
-        return true
+    public boolean setAlarmStatus(String alarm) {
+        ru.setAlarmStatus(alarm);
+        return true;
     }
 
     @Override

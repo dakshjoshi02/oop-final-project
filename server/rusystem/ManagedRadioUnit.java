@@ -38,6 +38,19 @@ public class ManagedRadioUnit
         this.alarmStatus = RadioUnitAlarmStatusLevels.NO_ALARM;
         this.frequencySet = FrequencyBand.getEnums();
     }
+
+    public ManagedRadioUnit(String ipAddress, String radioUnitName, String radioVendor, String ratType) {
+        this.ipAddress = ipAddress;
+        this.radioUnitName = radioUnitName;
+        this.radioVendor = radioVendor;
+        this.ratType = ratType;
+        this.activatedState = new RUActivatedState(this);
+        this.idleState = new RUIdleState(this);
+        this.deactivatedState = new RUDeactivatedState(this);
+        this.currentState = idleState;
+        this.alarmStatus = RadioUnitAlarmStatusLevels.NO_ALARM;
+        this.frequencySet = FrequencyBand.getEnums();
+    }
     
     public Response triggerEvent(ManagedRuEvent managedRuEvent, List<String> msg)
     {   
@@ -61,7 +74,7 @@ public class ManagedRadioUnit
                 currentState.signalScaling();
                 break;
             case MODIFY_CARRIER:
-                currentState.modifyCarrier(0, "asdas");
+                currentState.modifyCarrier(msg);
                 break;
             case REMOVE_CARRIER:
                 currentState.removeCarrier(0);
@@ -73,7 +86,7 @@ public class ManagedRadioUnit
                 currentState.removeAllCarriers();
                 break;
             case SET_ALARM_STATUS:
-                currentState.setAlarmStatus();
+                currentState.setAlarmStatus(msg.get(0));
                 break;
             case ACKNOWLEDGE_ALARM:
                 currentState.acknowledgeAlarm();
@@ -119,7 +132,7 @@ public class ManagedRadioUnit
         return true;
     }
 
-    protected boolean setupCarrier(Carrier c) {
+    protected boolean setupCarrier(List<String> msg) {
         if (carriers.containsKey(c.getInteger())) {
             return false;
         }
@@ -129,8 +142,18 @@ public class ManagedRadioUnit
     }
 
     protected boolean performSelfDiagnostics() {
-        // TODO: perform self diagnostics
+        System.out.println("self diagnosis performed");
         return true;
+    }
+
+    protected boolean setAlarmStatus(String alarmStatus) {
+        for (RadioUnitAlarmStatusLevels alarm : RadioUnitAlarmStatusLevels.values()) {
+            if (alarm.name().equalsIgnoreCase(alarmStatus)) {
+                this.alarmStatus = alarm;
+                return true;
+            }
+        }
+        return false;
     }
 
     protected boolean signalScaling() {
