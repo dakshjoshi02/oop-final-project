@@ -1,7 +1,9 @@
 package rusystem;
 
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import common.Response;
 
@@ -34,7 +36,7 @@ public class ManagedNetwork
         
         ManagedRadioUnit managedRadioUnit = new ManagedRadioUnit();
         managedRadioUnits.put(ipAddress, managedRadioUnit);
-        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP);
+        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP, new ArrayList<String>());
         return response;
     }
     
@@ -42,8 +44,10 @@ public class ManagedNetwork
     {
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
-        {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.ACTIVATE);
+        {   
+            List<String> msg = new ArrayList<String>();
+            msg.add(ipAddress);
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.ACTIVATE, new ArrayList<String>());
             return response;
         }
 
@@ -56,7 +60,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.POST_ACTIVATION);
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.POST_ACTIVATION, new ArrayList<String>());
             return response;
         }
 
@@ -69,7 +73,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SIGNAL_SCALING);
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SIGNAL_SCALING, new ArrayList<String>());
             return response;
         }
 
@@ -82,7 +86,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SELF_DIAGNOSTICS);
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SELF_DIAGNOSTICS, new ArrayList<String>());
             return response;
         }
 

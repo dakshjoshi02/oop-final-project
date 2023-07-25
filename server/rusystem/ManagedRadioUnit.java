@@ -2,6 +2,7 @@ package rusystem;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 import common.Carrier;
 import common.CommonType.FrequencyBand;
@@ -38,7 +39,7 @@ public class ManagedRadioUnit
         this.frequencySet = FrequencyBand.getEnums();
     }
     
-    public Response triggerEvent(ManagedRuEvent managedRuEvent)
+    public Response triggerEvent(ManagedRuEvent managedRuEvent, List<String> msg)
     {   
         switch(managedRuEvent) {
             case SETUP:
