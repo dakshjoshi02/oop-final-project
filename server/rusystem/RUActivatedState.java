@@ -1,7 +1,5 @@
 package rusystem;
 
-import java.util.List;
-
 public class RUActivatedState implements RUStateMachine {
 
     ManagedRadioUnit ru;
@@ -36,7 +34,7 @@ public class RUActivatedState implements RUStateMachine {
     }
 
     @Override
-    public boolean setupCarrier(List<String> msg) {
+    public boolean setupCarrier(String msg) {
         return ru.setupCarrier(msg);
     }
 
@@ -46,12 +44,12 @@ public class RUActivatedState implements RUStateMachine {
     }
 
     @Override
-    public boolean modifyCarrier(int carrierId, String bandFrequency) {
-        return ru.modifyCarrier(carrierId, bandFrequency);
+    public boolean modifyCarrier(String idAndFrequency) {
+        return ru.modifyCarrier(idAndFrequency);
     }
 
     @Override
-    public boolean removeCarrier(int carrierId) {
+    public boolean removeCarrier(String carrierId) {
         System.out.println("Activated, No Action Performed");
         return false;
     }

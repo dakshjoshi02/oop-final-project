@@ -2,7 +2,6 @@ package common;
 
 import java.util.List;
 
-import common.CommonType.FrequencyBand;
 import common.CommonType.RFPort;
 
 public class Carrier
@@ -18,8 +17,12 @@ public class Carrier
 
     private List<RFPort> rfPorts;
     private double transmittingPower;
-    
-    public Carrier(List<RFPort> rfPorts, FrequencyBand frequencyBand, double transmittingPower)
+
+    public List<RFPort> getRfPorts() {
+        return this.rfPorts;
+    }
+
+    public Carrier(List<RFPort> rfPorts, String frequencyBand, double transmittingPower)
     {
         this.id = globalId;
         ++globalId;
@@ -28,17 +31,7 @@ public class Carrier
         this.transmittingPower = transmittingPower;
     }
 
-    public boolean createLteCarrier() {
-        // TODO: create lte carrier with set of input attributes
-        return true;
-    }
-
-    public boolean createWcdmaCarrier() {
-        // TODO: create wcdma carrier with set of input attributes
-        return true;
-    }
-
-    public FrequencyBand getFreqBand() {
+    public String getFreqBand() {
         return this.freqBand;
     }
 
@@ -46,4 +39,16 @@ public class Carrier
         this.freqBand = freqBand;
     }
 
+    public void setRfPorts(List<RFPort> rfPorts) {
+        this.rfPorts = rfPorts;
+    }
+
+    public double getTransmittingPower() {
+        return this.transmittingPower;
+    }
+
+    public void setTransmittingPower(double transmittingPower) {
+        this.transmittingPower = transmittingPower;
+    }
+    
 }

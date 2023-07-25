@@ -1,11 +1,13 @@
 package rusystem;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 import common.Carrier;
 import common.CommonType.FrequencyBand;
+import common.CommonType.RFPort;
 import common.CommonType.RadioUnitAlarmStatusLevels;
 import common.Response;
 
@@ -52,7 +54,7 @@ public class ManagedRadioUnit
         this.frequencySet = FrequencyBand.getEnums();
     }
     
-    public Response triggerEvent(ManagedRuEvent managedRuEvent, List<String> msg)
+    public Response triggerEvent(ManagedRuEvent managedRuEvent, String msg)
     {   
         switch(managedRuEvent) {
             case SETUP:
@@ -68,7 +70,7 @@ public class ManagedRadioUnit
                 currentState.release();
                 break;
             case SETUP_CARRIER:
-                currentState.setupCarrier();
+                currentState.setupCarrier(msg);
                 break;
             case SIGNAL_SCALING:
                 currentState.signalScaling();
@@ -77,7 +79,7 @@ public class ManagedRadioUnit
                 currentState.modifyCarrier(msg);
                 break;
             case REMOVE_CARRIER:
-                currentState.removeCarrier(0);
+                currentState.removeCarrier(msg);
                 break;
             case SELF_DIAGNOSTICS:
                 currentState.performSelfDiagnostics();
@@ -108,36 +110,80 @@ public class ManagedRadioUnit
         return response;
     }
 
-    protected boolean removeCarrier(int carrierId) {
-        if (!this.carriers.containsKey(carrierId)) {
+    protected boolean removeCarrier(String carrierId) {
+        int id = Integer.parseInt(carrierId);
+        if (!CarrierManager.getInstance().carrierMap.containsKey(id)) {
             return false;
         }
 
-        carriers.remove(carrierId);
+        CarrierManager.getInstance().carrierMap.remove(id);
         return true;
     }
 
     protected boolean removeAllCarriers() {
-        carriers.clear();
+        CarrierManager.getInstance().carrierMap.clear();
         return true;
     }
 
-    protected boolean modifyCarrier(int carrierId, String frequencyBand) {
-        if (!carriers.containsKey(carrierId) || !this.frequencySet.contains(frequencyBand)) {
+    protected boolean modifyCarrier(String idAndFrequency) {
+        StringBuilder id = new StringBuilder();
+        StringBuilder frequency = new StringBuilder();
+        boolean isFirstPart = true;
+        char[] charArr = idAndFrequency.toCharArray();
+        for (int i = 0; i < charArr.length; i++) {
+            while (i < charArr.length && 48 <= charArr[i] && charArr[i] <= 57 && isFirstPart) {
+                id.append(charArr[i]);
+                i++;
+            }
+            isFirstPart = false;
+            i++;
+            while (i < charArr.length) {
+                frequency.append(charArr[i]);
+            }
+        }
+        int carrierId = Integer.parseInt(id.toString());
+        String frequencyBand = frequency.toString();
+        if (!CarrierManager.getInstance().carrierMap.containsKey(carrierId) || !this.frequencySet.contains(frequencyBand)) {
             return false;
         }
 
-        Carrier c = carriers.get(carrierId);
+        Carrier c = CarrierManager.getInstance().carrierMap.get(carrierId);
         c.setFreqBand(frequencyBand);
         return true;
     }
 
-    protected boolean setupCarrier(List<String> msg) {
-        if (carriers.containsKey(c.getInteger())) {
-            return false;
+    protected boolean setupCarrier(String msg) {
+        // List<RFPort> rfPorts, FrequencyBand frequencyBand, double transmittingPower
+        List<RFPort> rfPorts = new ArrayList<RFPort>();
+        StringBuilder frequencyBand = new StringBuilder();
+        char[] charArr = msg.toCharArray();
+        boolean ifNumReached = false;
+        int transmittingPowerStartIndex;
+        for (int i = 0; i < charArr.length; i++) {
+            if (48 <= charArr[i] && charArr[i] <= 57) {
+                ifNumReached = true;
+            }
+            if (!ifNumReached) {
+                for (RFPort v: RFPort.values()) {
+                    if (v.name().equalsIgnoreCase(Character.toString(charArr[i]))) {
+                        rfPorts.add(v);
+                    }
+                }
+            } else {
+                    if (Character.isAlphabetic(charArr[i]) || Character.isDigit(charArr[i])) {
+                        frequencyBand.append(charArr[i]);
+                    } else {
+                        transmittingPowerStartIndex = i + 1;
+                        break;
+                    }
+            }
+            
+            String transmittingPower = msg.substring(transmittingPowerStartIndex, msg.length());
+            Double transDouble = Double.parseDouble(transmittingPower);
         }
 
-        carriers.put(c.getInteger(), c);
+        Carrier c = new Carrier(rfPorts, frequencyBand, transmittingPowerStartIndex);
+        CarrierManager.getInstance().carrierMap.put(, c);
         return true;
     }
 
@@ -158,6 +204,11 @@ public class ManagedRadioUnit
 
     protected boolean signalScaling() {
         System.out.println("signal is scalling");
+        return true;
+    }
+
+    protected boolean acknowledgeAlarm() {
+        System.out.println("acknowledge alarm");
         return true;
     }
 
