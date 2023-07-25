@@ -73,4 +73,9 @@ public class RUIdleState implements RUStateMachine {
     public void postActivation() {
         System.out.println("Idled, No Action Performed");
     }
+
+    @Override
+    public String toString() {
+        return "Idle State";
+    }
 }

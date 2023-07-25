@@ -1,5 +1,8 @@
 package common;
 
+import java.util.HashMap;
+import java.util.HashSet;
+
 // Needs to stay as a clone of the client so that the user input & server/client messaging works properly (based off of the enum's ordinals)
 // Please update both places if you change something, could probably build this and include it in both builds but then the build instructions would need to change
 public class CommonType
@@ -59,7 +62,8 @@ public class CommonType
         WCDMA_BAND_8("900");
 
         private String value;
-
+        HashMap<String, FrequencyBand> FREQUENCY_MAP;
+        
         private FrequencyBand(String value) {
             this.value = value;
         }
@@ -67,6 +71,17 @@ public class CommonType
         public String getValue() {
             return value;
         }
+
+        public static HashSet<String> getEnums() {
+            HashSet<String> values = new HashSet<String>();
+
+            for (FrequencyBand f : FrequencyBand.values()) {
+                values.add(f.name());
+            }
+
+            return values;
+        }
+
     }
     
     public enum RUState

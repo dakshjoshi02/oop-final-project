@@ -1,10 +1,12 @@
 package rusystem;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
-import common.Response;
 import common.Carrier;
+import common.CommonType.FrequencyBand;
 import common.CommonType.RadioUnitAlarmStatusLevels;
+import common.Response;
 
 public class ManagedRadioUnit
 {
@@ -24,6 +26,7 @@ public class ManagedRadioUnit
     private String ratType;
     private HashMap<Integer, Carrier> carriers; // or Carriers?
     private RadioUnitAlarmStatusLevels alarmStatus;
+    private HashSet<String> frequencySet;
 
     public ManagedRadioUnit()
     {
@@ -32,6 +35,7 @@ public class ManagedRadioUnit
         this.deactivatedState = new RUDeactivatedState(this);
         this.currentState = idleState;
         this.alarmStatus = RadioUnitAlarmStatusLevels.NO_ALARM;
+        this.frequencySet = FrequencyBand.getEnums();
     }
     
     public Response triggerEvent(ManagedRuEvent managedRuEvent)
@@ -41,7 +45,7 @@ public class ManagedRadioUnit
                 currentState.setup();
                 break;
             case ACTIVATE:
-                currentState.setup();
+                currentState.activate();
                 break;
             case DEACTIVATE:
                 currentState.deactivate();
@@ -105,12 +109,21 @@ public class ManagedRadioUnit
     }
 
     protected boolean modifyCarrier(int carrierId, String frequencyBand) {
-        // TODO: Waiting for Carrier to be completed
+        if (!carriers.containsKey(carrierId) || !this.frequencySet.contains(frequencyBand)) {
+            return false;
+        }
+
+        Carrier c = carriers.get(carrierId);
+        c.setFreqBand(frequencyBand);
         return true;
     }
 
-    protected boolean setupCarrier() {
-        // TODO: Waiting for Carrier to be completed
+    protected boolean setupCarrier(Carrier c) {
+        if (carriers.containsKey(c.getInteger())) {
+            return false;
+        }
+
+        carriers.put(c.getInteger(), c);
         return true;
     }
 
@@ -184,6 +197,7 @@ public class ManagedRadioUnit
     }
 
     protected void setCurrentState(RUStateMachine currentState) {
+        System.out.println("RU state is set from " + this.currentState.toString() + " to " + currentState.toString());
         this.currentState = currentState;
     }
 

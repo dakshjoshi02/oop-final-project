@@ -1,6 +1,7 @@
 package common;
 
 import java.util.List;
+
 import common.CommonType.FrequencyBand;
 import common.CommonType.RFPort;
 
@@ -8,7 +9,13 @@ public class Carrier
 {
     private static Integer globalId = 1;
     private final Integer id;
-    private FrequencyBand freqBand;
+
+    public int getInteger() {
+		return this.id;
+	}
+
+    private String freqBand;
+
     private List<RFPort> rfPorts;
     private double transmittingPower;
     
@@ -30,4 +37,13 @@ public class Carrier
         // TODO: create wcdma carrier with set of input attributes
         return true;
     }
+
+    public FrequencyBand getFreqBand() {
+        return this.freqBand;
+    }
+
+    public void setFreqBand(String freqBand) {
+        this.freqBand = freqBand;
+    }
+
 }

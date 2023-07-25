@@ -73,4 +73,9 @@ public class RUDeactivatedState implements RUStateMachine {
     public void postActivation() {
         System.out.println("Deactivated, No Action Performed");
     }
+
+    @Override
+    public String toString() {
+        return "Deactivated State";
+    }
 }

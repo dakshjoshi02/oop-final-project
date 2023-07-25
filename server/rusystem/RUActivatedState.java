@@ -76,4 +76,9 @@ public class RUActivatedState implements RUStateMachine {
     public void postActivation() {
         System.out.println("Activated, No Action Performed");
     }
+
+    @Override
+    public String toString() {
+        return "Activated State";
+    }
 }
