@@ -158,7 +158,8 @@ public class ManagedRadioUnit
         StringBuilder frequencyBand = new StringBuilder();
         char[] charArr = msg.toCharArray();
         boolean ifNumReached = false;
-        int transmittingPowerStartIndex;
+        int transmittingPowerStartIndex = 0;
+        Double transDouble = 0.0;
         for (int i = 0; i < charArr.length; i++) {
             if (48 <= charArr[i] && charArr[i] <= 57) {
                 ifNumReached = true;
@@ -179,11 +180,23 @@ public class ManagedRadioUnit
             }
             
             String transmittingPower = msg.substring(transmittingPowerStartIndex, msg.length());
-            Double transDouble = Double.parseDouble(transmittingPower);
+            transDouble = Double.parseDouble(transmittingPower);
         }
 
-        Carrier c = new Carrier(rfPorts, frequencyBand, transmittingPowerStartIndex);
-        CarrierManager.getInstance().carrierMap.put(, c);
+        String frequency = frequencyBand.toString();
+        boolean isLte = false;
+        for (FrequencyBand value: FrequencyBand.values()) {
+            if (value.getValue().equalsIgnoreCase(frequency)) {
+                if (value.name().contains("LTE")) {
+                    isLte = true;
+                }
+            }
+        }
+        if (isLte) {
+            CarrierManager.getInstance().createLteCarrier(rfPorts, frequency, transDouble);
+        } else {
+            CarrierManager.getInstance().createWcdmaCarrier(rfPorts, frequency, transmittingPowerStartIndex);
+        }
         return true;
     }
 

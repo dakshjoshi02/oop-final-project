@@ -17,6 +17,7 @@ public class Carrier
 
     private List<RFPort> rfPorts;
     private double transmittingPower;
+    private String RATType;
 
     public List<RFPort> getRfPorts() {
         return this.rfPorts;
@@ -50,5 +51,12 @@ public class Carrier
     public void setTransmittingPower(double transmittingPower) {
         this.transmittingPower = transmittingPower;
     }
-    
+
+    public String getRATType() {
+        return this.RATType;
+    }
+
+    public void setRATType(String RATType) {
+        this.RATType = RATType;
+    }
 }

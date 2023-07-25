@@ -8,6 +8,7 @@ import common.Carrier;
 import common.CommonType.FrequencyBand;
 import common.CommonType.RFPort;
 import common.Response;
+import rusystem.CarrierManager;
 import rusystem.ManagedNetwork;
 
 public class SetupCarrierOnRuCommand extends Command
@@ -40,8 +41,8 @@ public class SetupCarrierOnRuCommand extends Command
                 FrequencyBand frequencyBand = FrequencyBand.values()[Integer.parseInt(carrierSegments.get(1))];
                 double transmittingPower = Double.parseDouble(carrierSegments.get(2));
                 // if you set it here, no one can get access to. need to set up in carrier manager
-                carrier = new Carrier(rfPorts, frequencyBand, transmittingPower);
-
+                // carrier = new Carrier(rfPorts, frequencyBand, transmittingPower);
+                CarrierManager.getInstance().createLteCarrier(rfPorts, frequencyBand, transmittingPower);
             }
             else
             {

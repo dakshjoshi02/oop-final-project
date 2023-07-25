@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import common.Carrier;
-import common.CommonType.FrequencyBand;
 import common.CommonType.RFPort;
 
 public class CarrierManager 
@@ -26,16 +25,18 @@ public class CarrierManager
         }
     }
 
-    public void createLteCarrier (List<RFPort> rfPorts, FrequencyBand frequencyBand, double transmittingPower)
+    public void createLteCarrier (List<RFPort> rfPorts, String frequencyBand, double transmittingPower)
     {   
         Carrier c = new Carrier(rfPorts, frequencyBand, transmittingPower);
+        c.setRATType("LTE_FDD");
         carrierMap.put(c.getInteger(), c);
     }
 
-    public void createWcdmaCarrier(List<RFPort> rfPorts, FrequencyBand frequencyBand, double transmittingPower)
+    public void createWcdmaCarrier(List<RFPort> rfPorts, String frequencyBand, double transmittingPower)
     {
         Carrier c = new Carrier(rfPorts, frequencyBand, transmittingPower);
         carrierMap.put(c.getInteger(), c);
+        c.setRATType("WCDMA");
     }
 
     public boolean removeCarrier(Integer carrierId) {
