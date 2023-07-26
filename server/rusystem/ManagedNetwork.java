@@ -128,4 +128,40 @@ public class ManagedNetwork
         Response response = new Response(false, "Failed to find the managedRadioUnit associated with " + ipAddress);
         return response;
     }
+
+    public Response addRadioUnit(ManagedRadioUnit radioUnit)
+    {
+        if (radioUnit != null)
+        {
+            ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(radioUnit.getIpAddress());
+            if (managedRadioUnit != null)
+            {
+                Response response = new Response(false, "Radio unit associated with that ip address has already been added.");
+                return response;
+            }
+
+            managedRadioUnits.put(radioUnit.getIpAddress(), radioUnit);
+            Response response = radioUnit.triggerEvent(ManagedRuEvent.SETUP); // ?
+            return response;
+        }
+        return new Response(false, "Radio Unit does not exist/cannot be null value.");
+    }
+
+    public Response removeRadioUnit(ManagedRadioUnit radioUnit)
+    {
+        if (radioUnit != null)
+        {
+            ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(radioUnit.getIpAddress());
+            if (managedRadioUnit == null)
+            {
+                Response response = new Response(false, "Radio unit associated with that ip address does not exist.");
+                return response;
+            }
+
+            managedRadioUnits.remove(radioUnit.getIpAddress());
+            Response response = radioUnit.triggerEvent(ManagedRuEvent.DEACTIVATE); // ?
+            return response;
+        }
+        return new Response(false, "Radio Unit does not exist/cannot be null value.");
+    }
 }

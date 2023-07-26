@@ -4,5 +4,5 @@ public enum RUVender
 {
     ERICSSON,
     NOKIA,
-    Unknow
+    Unknown
 }

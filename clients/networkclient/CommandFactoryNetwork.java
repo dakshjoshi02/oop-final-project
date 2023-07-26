@@ -18,7 +18,7 @@ public class CommandFactoryNetwork extends CommandFactory
             case DECOMMISSION_RU:
                 return new DecommissionRUCommand("Decommission RU", Arrays.asList("IP Address"));
             case ADD_RADIO_UNIT:
-                return new AddRadioUnitCommand("Add Radio Unit", Arrays.asList("IP Address"));
+                return new AddRadioUnitCommand("Add Radio Unit", Arrays.asList("RAT type", "Vender", "Unit Name", "IP Address"));
             case REMOVE_RADIO_UNIT:
                 return new RemoveRadioUnitCommand("Remove Radio Unit", Arrays.asList("IP Address"));
             case SETUP_RU:
