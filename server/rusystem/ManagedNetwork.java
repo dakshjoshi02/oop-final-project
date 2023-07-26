@@ -36,7 +36,7 @@ public class ManagedNetwork
         
         ManagedRadioUnit managedRadioUnit = new ManagedRadioUnit();
         managedRadioUnits.put(ipAddress, managedRadioUnit);
-        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP, new ArrayList<String>());
+        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP, "");
         return response;
     }
     
@@ -47,7 +47,7 @@ public class ManagedNetwork
         {   
             List<String> msg = new ArrayList<String>();
             msg.add(ipAddress);
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.ACTIVATE, new ArrayList<String>());
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.ACTIVATE, "");
             return response;
         }
 
@@ -60,7 +60,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.POST_ACTIVATION, new ArrayList<String>());
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.POST_ACTIVATION, "");
             return response;
         }
 
@@ -73,7 +73,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SIGNAL_SCALING, new ArrayList<String>());
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SIGNAL_SCALING, "");
             return response;
         }
 
@@ -86,7 +86,7 @@ public class ManagedNetwork
         ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
         if (managedRadioUnit != null)
         {
-            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SELF_DIAGNOSTICS, new ArrayList<String>());
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SELF_DIAGNOSTICS, "");
             return response;
         }
 
