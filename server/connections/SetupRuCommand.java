@@ -27,10 +27,12 @@ public class SetupRuCommand extends Command
     public Response execute()
     {
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
-        
-        // TODO: Write code that does what SetupRuCommand should do on the managedNetwork
-
-        Response response = new Response(true, "Successfully executed SetupRuCommand");
+        Response response = managedNetwork.setupRU(ipAddress);
+        if (response.isSuccessful)
+        {
+            response = new Response(true, "Successfully executed SetupRuCommand");
+            return response;
+        }
         return response;
     }
 }
