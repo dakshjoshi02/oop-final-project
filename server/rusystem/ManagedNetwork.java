@@ -28,7 +28,7 @@ public class ManagedNetwork
     {
         if (managedRadioUnits.get(ipAddress) != null)
         {
-            Response response = new Response(false, "A managedRadioUnit already exists associated with: " + ipAddress);
+            Response response = new Response(false, "A managedRadioUnit already exists associated with that ip address.");
             return response;
         }
         
@@ -87,6 +87,45 @@ public class ManagedNetwork
         }
 
         Response response = new Response(false, "Failed to find the managedRadioUnit associated with: " + ipAddress);
+        return response;
+    }
+
+    public Response deactivateRU(String ipAddress)
+    {
+        ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
+        if (managedRadioUnit != null)
+        {
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.DEACTIVATE);
+            return response;
+        }
+
+        Response response = new Response(false, "Failed to find the managedRadioUnit associated with: " + ipAddress);
+        return response;
+    }
+
+    public Response removeAllCarriersOnRU(String ipAddress)
+    {
+        ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
+        if (managedRadioUnit != null)
+        {
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.REMOVE_ALL_CARRIERS);
+            return response;
+        }
+
+        Response response = new Response(false, "Failed to find the managedRadioUnit associated with " + ipAddress);
+        return response;
+    }
+
+    public Response releaseRU(String ipAddress)
+    {
+        ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
+        if (managedRadioUnit != null)
+        {
+            Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.RELEASE);
+            return response;
+        }
+
+        Response response = new Response(false, "Failed to find the managedRadioUnit associated with " + ipAddress);
         return response;
     }
 }

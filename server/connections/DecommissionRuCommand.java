@@ -27,10 +27,20 @@ public class DecommissionRuCommand extends Command
     public Response execute()
     {
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
-        
-        // TODO: Write code that does what DecommissionRuCommand should do on the managedNetwork
+        Response response = managedNetwork.deactivateRU(ipAddress);
+        if (response.isSuccessful)
+        {
+            response = managedNetwork.removeAllCarriersOnRU(ipAddress);
+            if (response.isSuccessful)
+            {
+                response = managedNetwork.releaseRU(ipAddress);
+                if (response.isSuccessful)
+                response = new Response(true, "Successfully executed CommissionRuCommand");
+                return response;
+            }
+        }
 
-        Response response = new Response(true, "Successfully executed DecommissionRuCommand");
+        // return latest error/failure message
         return response;
     }
 }
