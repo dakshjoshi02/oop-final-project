@@ -2,8 +2,8 @@ package connections;
 
 import java.util.List;
 
-import common.Response;
 import rusystem.ManagedNetwork;
+import common.Response;
 
 public class CommissionRuCommand extends Command
 {

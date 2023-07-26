@@ -1,15 +1,11 @@
 package connections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import common.Carrier;
-import common.CommonType.FrequencyBand;
-import common.CommonType.RFPort;
-import common.Response;
-import rusystem.CarrierManager;
 import rusystem.ManagedNetwork;
+import common.Response;
+import carriermanagement.Carrier;
+import carriermanagement.CarrierManager;
 
 public class SetupCarrierOnRuCommand extends Command
 {
@@ -23,31 +19,7 @@ public class SetupCarrierOnRuCommand extends Command
         if (inputs.size() == 2)
         {
             ipAddress = inputs.get(0);
-            String carrierAsString = inputs.get(1);
-
-            List<String> carrierSegments = new ArrayList<String>(Arrays.asList(carrierAsString.split(";")));
-            if (carrierSegments.size() == 3)
-            {
-                List<String> strPorts = new ArrayList<String>(Arrays.asList(carrierSegments.get(0).split("-")));
-                if (strPorts.size() == 0)
-                {
-                    throw new Exception("ABN: Wrong number of input strings passed to ctor()");
-                }
-                List<RFPort> rfPorts = new ArrayList<RFPort>();
-                for (String strPort : strPorts)
-                {
-                    rfPorts.add(RFPort.values()[Integer.parseInt(strPort)]);
-                }
-                FrequencyBand frequencyBand = FrequencyBand.values()[Integer.parseInt(carrierSegments.get(1))];
-                double transmittingPower = Double.parseDouble(carrierSegments.get(2));
-                // if you set it here, no one can get access to. need to set up in carrier manager
-                // carrier = new Carrier(rfPorts, frequencyBand, transmittingPower);
-                CarrierManager.getInstance().createLteCarrier(rfPorts, frequencyBand, transmittingPower);
-            }
-            else
-            {
-                throw new Exception("ABN: Wrong number of input strings passed to ctor()");
-            }
+            carrier = CarrierManager.Instance().createCarrier(inputs.get(1));
         }
         else
         {
