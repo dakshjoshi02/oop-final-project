@@ -27,10 +27,12 @@ public class RemoveRadioUnitCommand extends Command
     public Response execute()
     {
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
-        
-        // TODO: Write code that does what RemoveRadioUnitCommand should do on the managedNetwork
-
-        Response response = new Response(true, "Successfully executed RemoveRadioUnitCommand");
+        Response response = managedNetwork.removeRadioUnit(ipAddress);
+        if (response.isSuccessful)
+        {
+            response = new Response(true, "Successfully executed RemoveRadioUnitCommand");
+            return response;
+        }
         return response;
     }
 }

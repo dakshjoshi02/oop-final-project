@@ -147,21 +147,17 @@ public class ManagedNetwork
         return new Response(false, "Radio Unit does not exist/cannot be null value.");
     }
 
-    public Response removeRadioUnit(ManagedRadioUnit radioUnit)
+    public Response removeRadioUnit(String ipAddress)
     {
-        if (radioUnit != null)
+        ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
+        if (managedRadioUnit == null)
         {
-            ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(radioUnit.getIpAddress());
-            if (managedRadioUnit == null)
-            {
-                Response response = new Response(false, "Radio unit associated with that ip address does not exist.");
-                return response;
-            }
-
-            managedRadioUnits.remove(radioUnit.getIpAddress());
-            Response response = radioUnit.triggerEvent(ManagedRuEvent.DEACTIVATE); // ?
+            Response response = new Response(false, "Radio unit associated with that ip address does not exist.");
             return response;
         }
-        return new Response(false, "Radio Unit does not exist/cannot be null value.");
+
+        managedRadioUnits.remove(ipAddress);
+        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.DEACTIVATE); // ?
+        return response;
     }
 }
