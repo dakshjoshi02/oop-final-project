@@ -29,8 +29,7 @@ public class PerformSelfDiagnosticsCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what PerformSelfDiagnosticsCommand should do on the managedNetwork
-        managedNetwork.performSelfDiagnostics(ipAddress);
-        
+
         Response response = new Response(true, "Successfully executed PerformSelfDiagnosticsCommand");
         return response;
     }

@@ -31,8 +31,7 @@ public class RemoveCarrierOnRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what RemoveCarrierOnRuCommand should do on the managedNetwork
-        managedNetwork.removeCarrierOnRU(ipAddress);
-        
+
         Response response = new Response(true, "Successfully executed RemoveCarrierOnRuCommand");
         return response;
     }

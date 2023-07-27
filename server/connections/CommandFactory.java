@@ -75,13 +75,13 @@ public class CommandFactory
                 case ACKNOWLEDGE_ALARM:
                     return new AcknowledgeAlarmCommand("Acknowledge Alarm", parameters);
                 default:
-                    return new StubCommand("Invalid Input; unknown command.");
+                    return new StubCommand("Invalid Input");
             }
         }
         catch (Exception e)
         {
             // Need to respond to the client that the input was invalid
-            return new StubCommand("Invalid Input; exception based.");
+            return new StubCommand("Invalid Input");
         }
     }
 }

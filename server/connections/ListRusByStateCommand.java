@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import common.RUState;
+import common.CommonType.RUState;
 
 public class ListRusByStateCommand extends Command
 {

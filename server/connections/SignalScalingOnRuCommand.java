@@ -29,8 +29,7 @@ public class SignalScalingOnRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what SignalScalingOnRuCommand should do on the managedNetwork
-        managedNetwork.performSignalScaling(ipAddress);
-        
+
         Response response = new Response(true, "Successfully executed SignalScalingOnRuCommand");
         return response;
     }

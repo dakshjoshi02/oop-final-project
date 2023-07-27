@@ -73,7 +73,6 @@ public class CarrierManager
             }
         }
         
-        System.out.println("Carrier construction has an incorrect number of arguments.");
         return null;
     }
 }

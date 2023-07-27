@@ -29,8 +29,7 @@ public class DeactivateRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what DeactivateRuCommand should do on the managedNetwork
-        managedNetwork.activateRU(ipAddress);
-        
+
         Response response = new Response(true, "Successfully executed DeactivateRuCommand");
         return response;
     }

@@ -4,12 +4,10 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import carriermanagement.Carrier;
 
 public class CommissionRuCommand extends Command
 {
     private String ipAddress;
-    private Carrier carrier;
 
     public CommissionRuCommand(String commandText, List<String> inputs) throws Exception
     {
@@ -29,7 +27,7 @@ public class CommissionRuCommand extends Command
     public Response execute()
     {
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
-        Response response = managedNetwork.setupRU(ipAddress, carrier);
+        Response response = managedNetwork.setupRU(ipAddress);
         if (response.isSuccessful)
         {
             response = managedNetwork.activateRU(ipAddress);

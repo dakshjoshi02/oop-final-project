@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import common.RAT;
+import common.CommonType.RAT;
 
 public class ListRusByStandardCommand extends Command
 {

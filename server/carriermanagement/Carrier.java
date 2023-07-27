@@ -18,20 +18,7 @@ public class Carrier
     public Carrier(Integer carrierID, Integer vender, RAT rat, List<RFPort> rfPorts, FrequencyBand frequencyBand, double transmittingPower)
     {
         this.id = carrierID;
-        switch (vender)
-        {
-            case 0:
-                this.ruVender = RUVender.ERICSSON;
-                break;
-            case 1:
-                this.ruVender = RUVender.NOKIA;
-                break;
-            case 2:
-                this.ruVender = RUVender.Unknown;
-                break;
-            default:
-                this.ruVender = RUVender.Unknown;
-        }
+        //this.ruVender = (RUVender)vender;
         this.ratType = rat;
         this.rfPorts = rfPorts;
         this.freqBand = frequencyBand;

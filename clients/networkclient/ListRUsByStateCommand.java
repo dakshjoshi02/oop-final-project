@@ -2,7 +2,7 @@ package networkclient;
 
 import common.Command;
 import common.MenuOption;
-import common.RUState;
+import common.CommonType.RUState;
 import java.util.List;
 
 public class ListRUsByStateCommand extends Command

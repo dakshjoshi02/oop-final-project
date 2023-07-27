@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import common.FrequencyBand;
+import common.CommonType.FrequencyBand;
 
 public class ModifyCarrierOnRuCommand extends Command
 {
@@ -34,7 +34,7 @@ public class ModifyCarrierOnRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what ModifyCarrierOnRuCommand should do on the managedNetwork
-        managedNetwork.modifyCarrierOnRu(ipAddress, carrierId, freqBand);
+
         Response response = new Response(true, "Successfully executed ModifyCarrierOnRuCommand");
         return response;
     }

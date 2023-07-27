@@ -22,7 +22,7 @@ public class CommandFactoryNetwork extends CommandFactory
             case REMOVE_RADIO_UNIT:
                 return new RemoveRadioUnitCommand("Remove Radio Unit", Arrays.asList("IP Address"));
             case SETUP_RU:
-                return new SetupRUCommand("Setup RU", Arrays.asList("IP Address", "Carrier"));
+                return new SetupRUCommand("Setup RU", Arrays.asList("IP Address"));
             case RELEASE_RU:
                 return new ReleaseRUCommand("Release RU", Arrays.asList("IP Address"));
             case ACTIVATE_RU:

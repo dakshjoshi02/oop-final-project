@@ -29,8 +29,7 @@ public class PostActivationCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what PostActivationCommand should do on the managedNetwork
-        managedNetwork.postActivation(ipAddress);
-        
+
         Response response = new Response(true, "Successfully executed PostActivationCommand");
         return response;
     }
