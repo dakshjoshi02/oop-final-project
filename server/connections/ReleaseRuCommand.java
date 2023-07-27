@@ -29,7 +29,8 @@ public class ReleaseRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what ReleaseRuCommand should do on the managedNetwork
-
+        managedNetwork.releaseRU(ipAddress);
+        
         Response response = new Response(true, "Successfully executed ReleaseRuCommand");
         return response;
     }

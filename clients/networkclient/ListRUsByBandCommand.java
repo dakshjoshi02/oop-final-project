@@ -2,7 +2,7 @@ package networkclient;
 
 import common.Command;
 import common.MenuOption;
-import common.CommonType.FrequencyBand;
+import common.FrequencyBand;
 import java.util.List;
 
 public class ListRUsByBandCommand extends Command

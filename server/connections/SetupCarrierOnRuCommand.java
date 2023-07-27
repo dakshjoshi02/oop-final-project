@@ -33,7 +33,7 @@ public class SetupCarrierOnRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what SetupCarrierOnRuCommand should do on the managedNetwork
-
+        managedNetwork.setupCarrierOnRU(ipAddress, carrier);
         Response response = new Response(true, "Successfully executed SetupCarrierOnRuCommand");
         return response;
     }

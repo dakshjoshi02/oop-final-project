@@ -35,19 +35,6 @@ public class ManagedRadioUnit
         // this.radioVendor
         // this.ratType
     }
-
-    public ManagedRadioUnit(RAT ratType, RUVender vender, String unitName, String ipAddress)
-    {
-        this.activatedState = new RUActivatedState(this);
-        this.idleState = new RUIdleState(this);
-        this.deactivatedState = new RUDeactivatedState(this);
-        this.currentState = idleState;
-        this.alarmStatus = RUAlarmStatusLevels.NO_ALARM;
-        this.radioUnitName = unitName;
-        this.ruVender = vender;
-        this.ratType = ratType;
-        this.ipAddress = ipAddress;
-    }
     
     public Response triggerEvent(ManagedRuEvent managedRuEvent)
     {   
@@ -134,7 +121,7 @@ public class ManagedRadioUnit
         return true;
     }
 
-    protected boolean removeCarrier(int carrierId) {
+    protected boolean removeCarrier(Integer carrierId) {
         if (!this.carrierList.containsKey(carrierId)) {
             return false;
         }
@@ -148,7 +135,7 @@ public class ManagedRadioUnit
         return true;
     }
 
-    protected boolean modifyCarrier(int carrierId, FrequencyBand frequencyBand) {
+    public boolean modifyCarrier(Integer carrierId, FrequencyBand frequencyBand) {
         // TODO: Waiting for Carrier to be completed
         if(carrierList.containsKey(carrierId))
         {

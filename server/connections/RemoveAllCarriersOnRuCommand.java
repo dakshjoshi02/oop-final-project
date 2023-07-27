@@ -29,7 +29,8 @@ public class RemoveAllCarriersOnRuCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what RemoveAllCarriersOnRuCommand should do on the managedNetwork
-
+        managedNetwork.removeAllCarriersOnRU(ipAddress);
+        
         Response response = new Response(true, "Successfully executed RemoveAllCarriersOnRuCommand");
         return response;
     }

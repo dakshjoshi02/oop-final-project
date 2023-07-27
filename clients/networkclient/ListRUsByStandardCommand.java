@@ -2,7 +2,7 @@ package networkclient;
 
 import common.Command;
 import common.MenuOption;
-import common.CommonType.RAT;
+import common.RAT;
 import java.util.List;
 
 public class ListRUsByStandardCommand extends Command

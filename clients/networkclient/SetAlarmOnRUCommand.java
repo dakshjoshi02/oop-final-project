@@ -2,7 +2,7 @@ package networkclient;
 
 import common.Command;
 import common.MenuOption;
-import common.CommonType.RadioUnitAlarmStatusLevels;
+import common.RUAlarmStatusLevels;
 import java.util.List;
 
 public class SetAlarmOnRUCommand extends Command
@@ -24,7 +24,7 @@ public class SetAlarmOnRUCommand extends Command
         
         System.out.println("The below options are the available alarm statuses");
         System.out.println("---------------------------------------------------");
-        for (RadioUnitAlarmStatusLevels alarmStatus : RadioUnitAlarmStatusLevels.values())
+        for (RUAlarmStatusLevels alarmStatus : RUAlarmStatusLevels.values())
         { 
             System.out.println(alarmStatus.ordinal() + " => " + alarmStatus);
         }

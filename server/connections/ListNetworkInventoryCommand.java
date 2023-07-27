@@ -23,7 +23,7 @@ public class ListNetworkInventoryCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what ListNetworkInventoryCommand should do on the managedNetwork
-
+        
         Response response = new Response(true, "Successfully executed ListNetworkInventoryCommand");
         return response;
     }

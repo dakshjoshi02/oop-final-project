@@ -29,7 +29,7 @@ public class AcknowledgeAlarmCommand extends Command
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
         
         // TODO: Write code that does what AcknowledgeAlarmCommand should do on the managedNetwork
-
+        
         Response response = new Response(true, "Successfully executed AcknowledgeAlarmCommand");
         return response;
     }

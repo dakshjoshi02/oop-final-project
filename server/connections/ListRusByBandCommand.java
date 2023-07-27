@@ -4,7 +4,7 @@ import java.util.List;
 
 import rusystem.ManagedNetwork;
 import common.Response;
-import common.CommonType.FrequencyBand;
+import common.FrequencyBand;
 
 public class ListRusByBandCommand extends Command
 {
