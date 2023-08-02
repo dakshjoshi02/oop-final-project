@@ -3,7 +3,8 @@ package rusystem;
 import java.util.Map;
 import java.util.HashMap;
 
-import common.Response;
+import carriermanagement.*;
+import common.*;
 
 public class ManagedNetwork
 {
@@ -32,7 +33,7 @@ public class ManagedNetwork
             return response;
         }
         
-        ManagedRadioUnit managedRadioUnit = new ManagedRadioUnit();
+        ManagedRadioUnit managedRadioUnit = new ManagedRadioUnit(ipAddress);
         managedRadioUnits.put(ipAddress, managedRadioUnit);
         Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP);
         return response;
@@ -122,6 +123,7 @@ public class ManagedNetwork
         if (managedRadioUnit != null)
         {
             Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.RELEASE);
+            managedRadioUnit.removeAllCarriers();
             return response;
         }
 
@@ -158,6 +160,37 @@ public class ManagedNetwork
 
         managedRadioUnits.remove(ipAddress);
         Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.DEACTIVATE); // ?
+        return response;
+    }
+
+    public Response listNetworkInventory()
+    {
+        String returnMsg = "";
+
+        for (Map.Entry<String, ManagedRadioUnit> entry : managedRadioUnits.entrySet())
+        {
+            returnMsg += "[" + entry.getValue().toString() + "] ";
+        }
+        
+        if (returnMsg == "")
+        {
+            return new Response(true, "There are no registered radio units at this time.");
+        }
+
+        return new Response(true, returnMsg);
+    }
+
+    public Response setupCarrierOnRu(String ipAddress, Carrier carrier)
+    {
+        ManagedRadioUnit managedRadioUnit = managedRadioUnits.get(ipAddress);
+        if (managedRadioUnit == null)
+        {
+            Response response = new Response(false, "Radio unit associated with that ip address does not exist.");
+            return response;
+        }
+
+        managedRadioUnit.setupCarrier(carrier);
+        Response response = managedRadioUnit.triggerEvent(ManagedRuEvent.SETUP_CARRIER);
         return response;
     }
 }

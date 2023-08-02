@@ -36,6 +36,16 @@ public class ManagedRadioUnit
         // this.ratType
     }
 
+    public ManagedRadioUnit(String ipAddress)
+    {
+        this.activatedState = new RUActivatedState(this);
+        this.idleState = new RUIdleState(this);
+        this.deactivatedState = new RUDeactivatedState(this);
+        this.currentState = idleState;
+        this.alarmStatus = RUAlarmStatusLevels.NO_ALARM;
+        this.ipAddress = ipAddress;
+    }
+
     public ManagedRadioUnit(RAT ratType, RUVender vender, String unitName, String ipAddress)
     {
         this.activatedState = new RUActivatedState(this);
@@ -264,5 +274,39 @@ public class ManagedRadioUnit
 
     protected RUStateMachine getDeactivatedState() {
         return this.deactivatedState;
+    }
+
+    @Override
+    public String toString()
+    {
+        if (this.getRadioUnitName() == null)
+        {
+            System.out.println("Radio bears no name; setting name to associated IP address.");
+            this.radioUnitName = "Unnamed";
+        }
+
+        if (this.getRadioVendor() == null)
+        {
+            this.setRadioVendor(RUVender.Unknown);
+        }
+
+        String vendorString;
+        switch (this.getRadioVendor())
+        {
+            case ERICSSON:
+                vendorString = "Ericsson";
+                break;
+            case NOKIA:
+                vendorString = "Nokia";
+                break;
+            case Unknown:
+                vendorString = "Unknown";
+                break;
+            default:
+                vendorString = "Unknown";
+        }
+
+        String returnMsg = this.getRadioUnitName() + ", " + this.getIpAddress() + ", " + vendorString;
+        return returnMsg;
     }
 }

@@ -21,10 +21,14 @@ public class ListNetworkInventoryCommand extends Command
     public Response execute()
     {
         ManagedNetwork managedNetwork = ManagedNetwork.getInstance();
-        
-        // TODO: Write code that does what ListNetworkInventoryCommand should do on the managedNetwork
+        Response response = managedNetwork.listNetworkInventory();
 
-        Response response = new Response(true, "Successfully executed ListNetworkInventoryCommand");
+        if (response.isSuccessful == false)
+        {
+            response = new Response(false, "Failed to list network inventory.");
+            return response;
+        }
+
         return response;
     }
 }

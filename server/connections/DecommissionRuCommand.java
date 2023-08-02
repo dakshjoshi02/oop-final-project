@@ -35,8 +35,14 @@ public class DecommissionRuCommand extends Command
             {
                 response = managedNetwork.releaseRU(ipAddress);
                 if (response.isSuccessful)
-                response = new Response(true, "Successfully executed CommissionRuCommand");
-                return response;
+                {
+                    response = managedNetwork.removeRadioUnit(ipAddress);
+                    if (response.isSuccessful)
+                    {
+                        response = new Response(true, "Successfully executed CommissionRuCommand");
+                        return response;
+                    }
+                }
             }
         }
 
